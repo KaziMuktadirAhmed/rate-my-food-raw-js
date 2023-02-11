@@ -18,7 +18,7 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 1px auto -webkit-focus-ring-color;
 }
 
 .page-container {
@@ -219,7 +219,28 @@ button:focus-visible {
 }
 
 .paginate {
-  background-color: aqua;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+  margin: 5%;
+}
+
+.btn-paginate {
+  height: 3rem;
+  width: 3rem;
+  padding: 0;
+  border: 1px solid rgb(165, 165, 165);
+  border-radius: 50%;
+  background-color: white;
+  font-weight: 600;
+  float: none;
+}
+.btn-paginate:hover {
+  background-color: white;
+  border: 1px solid rgb(34, 34, 34);
 }
 
 .content-side-bar {
