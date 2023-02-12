@@ -23,7 +23,7 @@ button:focus-visible {
 
 .page-container {
   height: 100%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   flex-direction: column;
 }
@@ -65,7 +65,7 @@ button:focus-visible {
   flex-direction: row;
   justify-self: center;
   column-gap: 5px;
-  padding: 0 11rem 0 15rem;
+  padding: 0 0 0 5rem;
 }
 
 .shadow {
