@@ -1,9 +1,11 @@
-import { getSearchResultsPage } from "../models/contents.model";
+import { getPageRange, getSearchResultsPage } from "../models/contents.model";
 import CardView from "./card.view";
+import PaginateView from "./paginate.view";
 
 class ContentsView {
   _currentPage = 1;
   _data = undefined;
+  _paginate = undefined;
 
   _parentElement = document.querySelector(".main-content");
   _headingElement = document.querySelector(".heading");
@@ -20,6 +22,7 @@ class ContentsView {
     this.setPageContents.bind(this);
 
     this.setPageContents();
+    this.setPagination();
   }
 
   _generateMarkup() {}
@@ -48,14 +51,11 @@ class ContentsView {
     this._cardContainer.insertAdjacentHTML("afterbegin", cards);
   }
 
-  handelClickNext() {
-    this.setCurrentPage(this._currentPage + 1);
-    this.setPageContents();
-  }
-
-  handelClickPrev() {
-    this.setCurrentPage(this._currentPage - 1);
-    this.setPageContents();
+  setPagination() {
+    let maxPage = getPageRange();
+    if (maxPage > 1) {
+      this._paginate = new PaginateView(maxPage, this._currentPage);
+    }
   }
 }
 

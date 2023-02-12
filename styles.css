@@ -31,7 +31,7 @@ button:focus-visible {
 .page-header {
   background-color: lightblue;
   border-bottom: 1.5px solid rgb(208, 207, 207);
-  flex: 1 1 80px;
+  flex: 1 1 90px;
 }
 
 .topbar {
@@ -285,7 +285,7 @@ button:focus-visible {
 
 .page-footer {
   background-color: gray;
-  flex: 1;
+  flex: 1 1 80px;
 }
 
 @media screen and (max-width: 500px) {
