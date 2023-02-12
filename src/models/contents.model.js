@@ -1,4 +1,4 @@
-const resultsPerPage = 15;
+const resultsPerPage = 5;
 let data = [];
 
 for (let i = 0; i < 100; i++) data[i] = `Data no: ${i + 1}`;

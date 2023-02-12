@@ -134,11 +134,13 @@ export default class PaginateView {
 
   handelClickNext(event) {
     event.preventDefault();
+    if (this._currentPage === this._maxRange) return;
     handelClick(this._currentPage + 1);
   }
 
   handelClickPrev(event) {
     event.preventDefault();
+    if (this._currentPage === 1) return;
     handelClick(this._currentPage - 1);
   }
 
