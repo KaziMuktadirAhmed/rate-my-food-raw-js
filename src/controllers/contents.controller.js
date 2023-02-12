@@ -12,14 +12,11 @@ export const setLocationSearchResult = async function (searchQuery) {
     const result = await getAllRestuarentForALocation(searchQuery);
     console.log(result);
     setData(result);
+    contentsView.setCurrentPage(1);
+    contentsView.render();
   } catch (error) {
     console.error("Error in making API request", error);
   }
-  //   renderContent((prev: boolean) => !prev);
-  //   resetContentPage(1);
-  // renderMap((prev: boolean) => !prev);
-  //   contentsView.setCurrentPage(1);
-  //   contentsView.render();
 };
 
 export const setResutarantNameSearchResult = async function (searchQuery) {
@@ -28,16 +25,13 @@ export const setResutarantNameSearchResult = async function (searchQuery) {
   );
   try {
     const result = await getAllRestuarentForAName(searchQuery);
-    console.log(result);
     const resultToSet = result
       .filter((item) => item.restaurant !== undefined)
       .map((item) => item.restaurant);
     console.log(resultToSet);
     setData(resultToSet);
-    //   renderContent((prev: boolean) => !prev);
-    //   resetContentPage(1);
-    //   contentsView.setCurrentPage(1);
-    //   contentsView.render();
+    contentsView.setCurrentPage(1);
+    contentsView.render();
   } catch (error) {
     throw error;
   }
@@ -60,10 +54,8 @@ export const setBothSearchResult = async function (itemQuery, locationQuery) {
 
     const finalResult = filtredItemResult.concat(resultLocation);
     setData(finalResult);
-    //   renderContent((prev: boolean) => !prev);
-    //   resetContentPage(1);
-    //   contentsView.setCurrentPage(1);
-    //   contentsView.render();
+    contentsView.setCurrentPage(1);
+    contentsView.render();
   } catch (error) {
     throw error;
   }

@@ -14,10 +14,16 @@ class App {
 
   constructor() {
     console.log("App started");
+
+    // sets execution context
     this.handelClickSearchBtn.bind(this);
+
+    // adds event handlers
     this._searchBtn.addEventListener("click", (event) =>
       this.handelClickSearchBtn(event)
     );
+
+    // Renders initial layout
     contentsView.render();
   }
 
@@ -29,14 +35,11 @@ class App {
 
     try {
       if (locationText.length > 2 && restaurantText.length > 2)
-        // setBothSearchResult(restaurantText, locationText);
-        console.log(locationText, restaurantText);
+        setBothSearchResult(restaurantText, locationText);
       else if (locationText.length > 2 && restaurantText.length <= 2)
         setLocationSearchResult(locationText);
-      // console.log(locationText);
       else if (locationText.length <= 2 && restaurantText.length > 2)
-        // setResutarantNameSearchResult(restaurantText);
-        console.log(restaurantText);
+        setResutarantNameSearchResult(restaurantText);
     } catch (error) {
       console.error("In app.js: ", error);
     }
