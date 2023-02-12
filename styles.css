@@ -22,7 +22,7 @@ button:focus-visible {
 }
 
 .page-container {
-  height: 100%;
+  /* height: 100vh; */
   /* border: 2px solid black; */
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@ button:focus-visible {
 .page-header {
   background-color: lightblue;
   border-bottom: 1.5px solid rgb(208, 207, 207);
-  flex: 1;
+  flex: 1 1 80px;
 }
 
 .topbar {
@@ -141,7 +141,7 @@ button:focus-visible {
 .page-content {
   background-color: white;
   display: flex;
-  flex: 6 2 auto;
+  flex: 5 2 auto;
 }
 
 .content-navigation {
@@ -169,7 +169,7 @@ button:focus-visible {
 }
 
 .card-container {
-  background-color: aliceblue;
+  background-color: white;
 }
 
 .card {
@@ -199,7 +199,7 @@ button:focus-visible {
   width: 37%;
 }
 
-.title {
+.card-title {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

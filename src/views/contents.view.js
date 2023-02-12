@@ -1,30 +1,62 @@
+import { getSearchResultsPage } from "../models/contents.model";
+import CardView from "./card.view";
+
 class ContentsView {
-  _componentState = undefined;
+  _currentPage = 1;
+  _data = undefined;
 
   _parentElement = document.querySelector(".main-content");
+  _headingElement = document.querySelector(".heading");
   _cardContainer = document.querySelector(".card-container");
+  _nextBtn = document.querySelector(".btn-next");
+  _prevBtn = document.querySelector(".btn-prev");
 
-  constructor(props) {
-    this._componentState = props;
+  constructor() {
+    console.log("ContentsView class");
+
+    // setting up execution context for methods
+    this.getCardsDataForCurrentPage.bind(this);
+    this.setCurrentPage.bind(this);
+    this.setPageContents.bind(this);
+
+    this.setPageContents();
   }
 
-  _generateMarkup() {
-    markup = ``;
+  _generateMarkup() {}
 
-    if (this._componentState.item.name === undefined) {
-      let item =
-        this._componentState.item !== undefined
-          ? this._componentState.item
-          : "none";
+  getCardsDataForCurrentPage() {
+    this._data = getSearchResultsPage(this._currentPage);
+  }
 
-      markup += `<div class="card">
-                    Card
-                <h2>${item}</h2>
-                </div>`;
+  clearCardContainer() {
+    this._cardContainer.innerHTML = "";
+  }
 
-      return markup;
-    }
+  /**
+   * @param {number} pageNo page no to transition to
+   */
+  setCurrentPage(pageNo) {
+    this._currentPage = pageNo;
+  }
 
-    return markup;
+  setPageContents() {
+    this.getCardsDataForCurrentPage();
+    let cards = this._data
+      .map((item) => new CardView(item)._generateMarkup())
+      .join("");
+    this.clearCardContainer();
+    this._cardContainer.insertAdjacentHTML("afterbegin", cards);
+  }
+
+  handelClickNext() {
+    this.setCurrentPage(this._currentPage + 1);
+    this.setPageContents();
+  }
+
+  handelClickPrev() {
+    this.setCurrentPage(this._currentPage - 1);
+    this.setPageContents();
   }
 }
+
+export default new ContentsView();
