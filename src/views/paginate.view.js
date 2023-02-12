@@ -10,11 +10,13 @@ export default class PaginateView {
     this._maxRange = range;
     this._currentPage = currentPage;
 
+    // setting up execution context for methods
     this.handelClickNext.bind(this);
     this.handelClickPrev.bind(this);
     this._addPageLinks.bind(this);
     this._clearParent.bind(this);
 
+    // render component
     this._clearParent();
     this._addPageLinks();
     this._addButtons();

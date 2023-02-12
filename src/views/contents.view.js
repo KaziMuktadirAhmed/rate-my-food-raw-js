@@ -10,21 +10,19 @@ class ContentsView {
   _parentElement = document.querySelector(".main-content");
   _headingElement = document.querySelector(".heading");
   _cardContainer = document.querySelector(".card-container");
-  _nextBtn = document.querySelector(".btn-next");
-  _prevBtn = document.querySelector(".btn-prev");
 
   constructor() {
     // setting up execution context for methods
     this.getCardsDataForCurrentPage.bind(this);
     this.setCurrentPage.bind(this);
     this.setPageContents.bind(this);
+    this.setPagination.bind(this);
+  }
 
-    // Initial layout
+  render() {
     this.setPageContents();
     this.setPagination();
   }
-
-  _generateMarkup() {}
 
   getCardsDataForCurrentPage() {
     this._data = getSearchResultsPage(this._currentPage);
