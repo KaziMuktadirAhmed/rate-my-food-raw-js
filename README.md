@@ -1,4 +1,4 @@
-### Rate my foor
+### Rate my food
 
 ## How to run
 
