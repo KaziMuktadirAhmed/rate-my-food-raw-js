@@ -1,4 +1,8 @@
-import { getPageRange, getSearchResultsPage } from "../models/contents.model";
+import {
+  getPageRange,
+  getSearchResultsPage,
+  getTotalDataLength,
+} from "../models/contents.model";
 import CardView from "./card.view";
 import PaginateView from "./paginate.view";
 
@@ -16,6 +20,7 @@ class ContentsView {
     this.getCardsDataForCurrentPage.bind(this);
     this.setCurrentPage.bind(this);
     this.setPageContents.bind(this);
+    this.setHeading.bind(this);
     this.setPagination.bind(this);
   }
 
@@ -49,6 +54,7 @@ class ContentsView {
     this._parentElement.scrollIntoView({
       behavior: "smooth",
     });
+    this.setHeading();
   }
 
   setPagination() {
@@ -56,6 +62,14 @@ class ContentsView {
     if (maxPage > 1) {
       this._paginate = new PaginateView(maxPage, this._currentPage);
     }
+  }
+
+  setHeading() {
+    this._headingElement.innerHTML = "";
+    let markup = `Showing ${
+      this._data.length
+    } out of ${getTotalDataLength()} search results`;
+    this._headingElement.innerHTML = markup;
   }
 }
 

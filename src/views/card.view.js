@@ -34,16 +34,14 @@ export default class CardView {
       class="card-image_container"
     />
     <div class="card-description">
-      <h3 class="card-title">${name}</h3>
-      ${
-        servesCuisine &&
-        `<p>
+      <h3 class="card-title">${name}</h3>`;
+
+    if (servesCuisine !== undefined)
+      markup += `<p>
           <span class="card-tag">${servesCuisine}</span>
-        </p>`
-      }
-      <h4 class="card-address">${address.street}, ${address.postalCode}, ${
-      address.locality
-    }</h4>
+        </p>`;
+
+    markup += `<h4 class="card-address">${address.street}, ${address.postalCode}, ${address.locality}</h4>
       <p>Avarage price range: ${range} ${currency}</p>
     </div>
   </div>`;
