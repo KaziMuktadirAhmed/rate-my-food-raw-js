@@ -29,16 +29,16 @@ class App {
 
     try {
       if (locationText.length > 2 && restaurantText.length > 2)
-        // setBothSearchResult(itemText, locationText);
+        // setBothSearchResult(restaurantText, locationText);
         console.log(locationText, restaurantText);
       else if (locationText.length > 2 && restaurantText.length <= 2)
         setLocationSearchResult(locationText);
       // console.log(locationText);
       else if (locationText.length <= 2 && restaurantText.length > 2)
-        // setResutarantNameSearchResult(itemText);
+        // setResutarantNameSearchResult(restaurantText);
         console.log(restaurantText);
     } catch (error) {
-      console.log("In app: ", error);
+      console.error("In app.js: ", error);
     }
   }
 }
