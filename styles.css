@@ -141,7 +141,7 @@ button:focus-visible {
 .page-content {
   background-color: white;
   display: flex;
-  flex: 5 2 auto;
+  flex: 5 2 80vh;
 }
 
 .content-navigation {

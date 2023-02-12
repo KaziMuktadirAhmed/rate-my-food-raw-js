@@ -1,7 +1,7 @@
 const resultsPerPage = 15;
 let data = [];
 
-for (let i = 0; i < 500; i++) data[i] = `Data no: ${i + 1}`;
+for (let i = 0; i < 100; i++) data[i] = `Data no: ${i + 1}`;
 
 export const setData = function (arr) {
   data = arr;

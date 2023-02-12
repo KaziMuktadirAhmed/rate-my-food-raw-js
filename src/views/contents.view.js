@@ -14,13 +14,12 @@ class ContentsView {
   _prevBtn = document.querySelector(".btn-prev");
 
   constructor() {
-    console.log("ContentsView class");
-
     // setting up execution context for methods
     this.getCardsDataForCurrentPage.bind(this);
     this.setCurrentPage.bind(this);
     this.setPageContents.bind(this);
 
+    // Initial layout
     this.setPageContents();
     this.setPagination();
   }
@@ -49,6 +48,9 @@ class ContentsView {
       .join("");
     this.clearCardContainer();
     this._cardContainer.insertAdjacentHTML("afterbegin", cards);
+    this._parentElement.scrollIntoView({
+      behavior: "smooth",
+    });
   }
 
   setPagination() {
