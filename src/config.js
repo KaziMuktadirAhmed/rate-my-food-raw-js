@@ -1,2 +1,2 @@
-export const RapidAPIKey = "9f1d12a30dmsh9ec2333159aab52p17f79ajsn738ef0eb69cf";
+export const RapidAPIKey = "ad5b7b65a4msha856bcb501b1f19p165620jsncc7c9ef7f1bb";
 export const RapidAPIHost = "the-fork-the-spoon.p.rapidapi.com";

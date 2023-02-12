@@ -1,8 +1,17 @@
-const resultsPerPage = 5;
+import { cardModelData } from "./mockDB";
+
+const resultsPerPage = 6;
 let data = [];
+
+// for (let i = 0; i < 100; i++) data[i] = `Data no: ${i + 1}`;
+data = cardModelData;
 
 export const setData = function (arr) {
   data = arr;
+};
+
+export const getTotalDataLength = function () {
+  return data.length;
 };
 
 export const getPageRange = function () {

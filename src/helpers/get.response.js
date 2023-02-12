@@ -23,29 +23,29 @@ export const getAutocompleteText = async function (
   latitude = NaN,
   longitude = NaN
 ) {
-  let result;
   try {
+    let result;
     result = await requestAutocomplete(
       queryString,
       queryType,
       latitude,
       longitude
     );
+
+    if (queryType === QUERY_TYPES.location) {
+      return filterLocationAutocompleteResponse(result).map((item) => {
+        let { location } = item;
+        return location;
+      });
+    } else if (queryType === QUERY_TYPES.restuarent) {
+      return filterRestuarentAutocompleteResponse(result).map((item) => {
+        let { restuarent } = item;
+        return restuarent;
+      });
+    }
   } catch (error) {
     console.error(error);
     throw error;
-  }
-
-  if (queryType === QUERY_TYPES.location) {
-    return filterLocationAutocompleteResponse(result).map((item) => {
-      let { location } = item;
-      return location;
-    });
-  } else if (queryType === QUERY_TYPES.restuarent) {
-    return filterRestuarentAutocompleteResponse(result).map((item) => {
-      let { restuarent } = item;
-      return restuarent;
-    });
   }
 };
 
@@ -54,32 +54,37 @@ export const getAvailableLocationList = async function (
   latitude = NaN,
   longitude = NaN
 ) {
-  const initialList = filterLocationAutocompleteResponse(
-    await requestAutocomplete(
-      queryString,
-      QUERY_TYPES.location,
-      latitude,
-      longitude
-    )
-  );
+  try {
+    const initialList = filterLocationAutocompleteResponse(
+      await requestAutocomplete(
+        queryString,
+        QUERY_TYPES.location,
+        latitude,
+        longitude
+      )
+    );
 
-  const promises = initialList.map((item) => requestLocationList(item.id));
-  const filtred = (await Promise.allSettled(promises))
-    .filter(
-      (item) => item.status === "fulfilled" && item.value.id_city !== undefined
-    )
-    .map((item) => {
-      let {
-        value: {
-          coordinates,
-          id_city,
-          prediction: { formatted_address },
-        },
-      } = item;
-      return { coordinates, id: id_city, location: formatted_address };
-    });
+    const promises = initialList.map((item) => requestLocationList(item.id));
+    const filtred = (await Promise.allSettled(promises))
+      .filter(
+        (item) =>
+          item.status === "fulfilled" && item.value.id_city !== undefined
+      )
+      .map((item) => {
+        let {
+          value: {
+            coordinates,
+            id_city,
+            prediction: { formatted_address },
+          },
+        } = item;
+        return { coordinates, id: id_city, location: formatted_address };
+      });
 
-  return filtred;
+    return filtred;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getAllRestuarentForALocation = async function (
@@ -87,21 +92,25 @@ export const getAllRestuarentForALocation = async function (
   latitude = NaN,
   longitude = NaN
 ) {
-  const availableLocation = await getAvailableLocationList(
-    queryString,
-    latitude,
-    longitude
-  );
+  try {
+    const availableLocation = await getAvailableLocationList(
+      queryString,
+      latitude,
+      longitude
+    );
 
-  const promises = availableLocation.map((item) =>
-    requestAllRestuarentsWithCityId(item.id)
-  );
+    const promises = availableLocation.map((item) =>
+      requestAllRestuarentsWithCityId(item.id)
+    );
 
-  const resolved = (await Promise.allSettled(promises))
-    .filter((item) => item.status === "fulfilled")
-    .reduce((accum, item) => accum.concat(item.value.data), []);
+    const resolved = (await Promise.allSettled(promises))
+      .filter((item) => item.status === "fulfilled")
+      .reduce((accum, item) => accum.concat(item.value.data), []);
 
-  return resolved;
+    return resolved;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getAllRestuarentForAName = async function (
@@ -109,23 +118,27 @@ export const getAllRestuarentForAName = async function (
   latitude = NaN,
   longitude = NaN
 ) {
-  const availableRestuarents = filterRestuarentAutocompleteResponse(
-    await requestAutocomplete(
-      queryString,
-      QUERY_TYPES.restuarent,
-      latitude,
-      longitude
-    )
-  );
+  try {
+    const availableRestuarents = filterRestuarentAutocompleteResponse(
+      await requestAutocomplete(
+        queryString,
+        QUERY_TYPES.restuarent,
+        latitude,
+        longitude
+      )
+    );
 
-  const promises = availableRestuarents.map((item) =>
-    requestRestuarentDetails(item.id)
-  );
-  const resolved = (await Promise.allSettled(promises))
-    .filter(
-      (item) => item.status === "fulfilled" && item.value.data !== undefined
-    )
-    .map((item) => item.value.data);
+    const promises = availableRestuarents.map((item) =>
+      requestRestuarentDetails(item.id)
+    );
+    const resolved = (await Promise.allSettled(promises))
+      .filter(
+        (item) => item.status === "fulfilled" && item.value.data !== undefined
+      )
+      .map((item) => item.value.data);
 
-  return resolved;
+    return resolved;
+  } catch (error) {
+    throw error;
+  }
 };

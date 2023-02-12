@@ -1,37 +1,49 @@
-import * as query from "./helpers/get.response";
-
-console.log("ok");
-
-const btnSearchRestuarent = document.querySelector(".search-food-restuarnt");
-const btnSearchLocation = document.querySelector(".search-location");
-
-btnSearchLocation.addEventListener("click", async function (event) {
-  console.log("searching resturants for given location ......");
-  let result;
-  try {
-    result = await query.getAllRestuarentForALocation("Lon");
-  } catch (error) {
-    console.error(error);
-  }
-  console.dir(result);
-});
-
-btnSearchRestuarent.addEventListener("click", async function (event) {
-  console.log("searching resturants for given name ........");
-  let result;
-  try {
-    result = await query.getAllRestuarentForAName("Burger");
-  } catch (error) {
-    console.error(error);
-  }
-
-  console.log(result);
-});
+import contentsView from "./views/contents.view";
+import {
+  setLocationSearchResult,
+  setResutarantNameSearchResult,
+  setBothSearchResult,
+} from "./controllers/contents.controller";
 
 /// Ok
 
 class App {
-  constructor() {}
+  _locationInput = document.querySelector(".location-input");
+  _resturantInput = document.querySelector(".resturant-input");
+  _searchBtn = document.querySelector(".search_btn");
+
+  constructor() {
+    console.log("App started");
+
+    // sets execution context
+    this.handelClickSearchBtn.bind(this);
+
+    // adds event handlers
+    this._searchBtn.addEventListener("click", (event) =>
+      this.handelClickSearchBtn(event)
+    );
+
+    // Renders initial layout
+    contentsView.render();
+  }
+
+  handelClickSearchBtn(event) {
+    event.preventDefault();
+
+    let locationText = this._locationInput.value,
+      restaurantText = this._resturantInput.value;
+
+    try {
+      if (locationText.length > 2 && restaurantText.length > 2)
+        setBothSearchResult(restaurantText, locationText);
+      else if (locationText.length > 2 && restaurantText.length <= 2)
+        setLocationSearchResult(locationText);
+      else if (locationText.length <= 2 && restaurantText.length > 2)
+        setResutarantNameSearchResult(restaurantText);
+    } catch (error) {
+      console.error("In app.js: ", error);
+    }
+  }
 }
 
 const app = new App();
