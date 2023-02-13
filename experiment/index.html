@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Rate my food</title>
+    <link href="styles.css" rel="stylesheet" />
+    <script type="module" src="test.js"></script>
+    <!-- <script type="module" src="mockDB.js"></script> -->
+  </head>
+  <body>
+    <div class="page-container">
+      <header class="page-header">
+        <div class="topbar">
+          <div class="top_left">
+            <b>LOGO</b>
+          </div>
+          <div class="top_center">
+            <div class="searchbar shadow">
+              <input
+                placeholder="Resturant name"
+                class="search_input border_right resturant-input"
+              />
+              <input
+                placeholder="Location or address"
+                class="search_input location-input"
+              />
+              <button class="search_btn" type="submit">
+                <svg width="24" height="24" class="search_icon">
+                  <path
+                    d="M21.853 20.355l-3.444-3.443a9.428 9.428 0 10-16.761-6.171 9.428 9.428 0 0015.348 7.586l3.443 3.442a1 1 0 101.414-1.414zM5.82 16.245a7.429 7.429 0 115.253 2.175 7.38 7.38 0 01-5.253-2.176z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="top_right">
+            <button class="btn_signup">Sign up</button>
+            <button class="btn_login">Log in</button>
+          </div>
+        </div>
+      </header>
+      <div class="page-banner page-banner-active"></div>
+      <main class="page-content">
+        <aside class="content-navigation"><h1>Navigation</h1></aside>
+        <article class="content-article">
+          <div class="main-content">
+            <h1 class="heading">Main Content</h1>
+          </div>
+        </article>
+        <aside class="content-side-bar"><h1>Sidebar</h1></aside>
+      </main>
+      <footer class="page-footer"><h1>Footer content</h1></footer>
+    </div>
+  </body>
+</html>
