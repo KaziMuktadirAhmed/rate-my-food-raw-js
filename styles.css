@@ -145,7 +145,8 @@ button:focus-visible {
 }
 
 .content-navigation {
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
+  border-right: 1.5px solid rgb(208, 207, 207);
   flex: 1;
 }
 
@@ -281,7 +282,8 @@ button:focus-visible {
 }
 
 .content-side-bar {
-  background-color: red;
+  /* background-color: red; */
+  border-left: 1.5px solid rgb(208, 207, 207);
   flex: 1;
 }
 

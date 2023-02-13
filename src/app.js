@@ -13,7 +13,9 @@ class App {
   _searchBtn = document.querySelector(".search_btn");
 
   constructor() {
-    console.log("App started");
+    console.log(
+      "App started\nInitial card data are impotred from a mock db file sarch using the searchbar to get new results"
+    );
 
     // sets execution context
     this.handelClickSearchBtn.bind(this);
