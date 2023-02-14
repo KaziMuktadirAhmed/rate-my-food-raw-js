@@ -1,4 +1,5 @@
 import { resturantDetails } from "../../experiment/mockDB";
+import ResturantDetailsHeadingView from "./details.heading.view";
 
 class ResturantDetails {
   _data;
@@ -7,8 +8,12 @@ class ResturantDetails {
   _bannerElement = document.querySelector(".page-banner");
 
   constructor() {
+    // Sets the execution context for functions
     this.setData.bind(this);
     this.render.bind(this);
+    this._setHeading.bind(this);
+
+    // Sets component data
     this.setData();
   }
 
@@ -20,9 +25,10 @@ class ResturantDetails {
   }
 
   render() {
-    console.log(this._data);
+    // console.log(this._data);
     this._clearImmidieateChildsOfParentElement();
     this._addImageReel();
+    this._setHeading();
   }
 
   _addImageReel() {
@@ -47,6 +53,22 @@ class ResturantDetails {
     for (let i = 0; i < len; i++) {
       this._parentElement.children[i].innerHTML = "";
     }
+  }
+
+  _setHeading() {
+    let {
+      aggregateRatings: {
+        thefork: { ratingValue, reviewCount },
+      },
+    } = this._data;
+    let heading = new ResturantDetailsHeadingView({
+      tags: this._data.highlightedTag,
+      name: this._data.name,
+      rating: { ratingValue, reviewCount },
+      address: this._data.address,
+    });
+
+    heading.render();
   }
 }
 

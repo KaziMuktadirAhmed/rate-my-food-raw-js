@@ -238,6 +238,51 @@ button:focus-visible {
   font-weight: 400;
 }
 
+.card-tags {
+  display: flex;
+  gap: 10px;
+}
+
+.card-tag-AMBIANCE {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-radius: 4px;
+  /* background-color: rgb(255, 221, 0, 1); */
+  color: white;
+  background-color: rgb(39, 42, 47);
+  padding: 2px 5px 2px 5px;
+}
+
+.card-tag-MICHELIN {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Luc ida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-radius: 4px;
+  /* background-color: rgb(255, 221, 0, 1); */
+  color: white;
+  background-color: red;
+  padding: 2px 5px 2px 5px;
+}
+
+.card-tag-DEFAULT {
+  flex: 0 1 auto;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-radius: 4px;
+  background-color: rgb(255, 221, 0, 1);
+  /* background-color: rgb(39, 42, 47); */
+  padding: 2px 5px 2px 5px;
+}
+
+.card-tag-YUMS_ACCEPTED {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Luc ida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-left: 3px solid black;
+  /* background-color: rgb(255, 221, 0, 1); */
+  /* color: white; */
+  /* background-color: rgb(39, 42, 47); */
+  padding: 0px 5px 0px 5px;
+}
+
 .paginate {
   display: flex;
   flex-wrap: wrap;

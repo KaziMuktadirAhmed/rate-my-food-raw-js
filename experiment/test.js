@@ -27,7 +27,6 @@ headingElement.insertAdjacentHTML("afterbegin", tagMarkup);
 // Inserting Resturant name and rating
 let headingTitleMarkup = ``;
 headingTitleMarkup += `<h1 class="heading-name">${restaurant.name}</h1>`;
-restaurant.aggregateRatings.thefork;
 let {
   aggregateRatings: {
     thefork: { ratingValue: theforkRating, reviewCount: theforkReviewCount },
