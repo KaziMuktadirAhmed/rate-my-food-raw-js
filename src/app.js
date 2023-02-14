@@ -4,6 +4,7 @@ import {
   setResutarantNameSearchResult,
   setBothSearchResult,
 } from "./controllers/contents.controller";
+import ResturantDetails from "./views/details.view";
 
 /// Ok
 
@@ -42,6 +43,9 @@ class App {
         setLocationSearchResult(locationText);
       else if (locationText.length <= 2 && restaurantText.length > 2)
         setResutarantNameSearchResult(restaurantText);
+      else {
+        ResturantDetails.render();
+      }
     } catch (error) {
       console.error("In app.js: ", error);
     }

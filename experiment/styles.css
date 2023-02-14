@@ -31,7 +31,7 @@ button:focus-visible {
 .page-header {
   background-color: lightblue;
   border-bottom: 1.5px solid rgb(208, 207, 207);
-  flex: 1 1 60px;
+  flex: 1 1 90px;
 }
 
 .topbar {
@@ -184,6 +184,10 @@ button:focus-visible {
   gap: 12px;
 }
 
+.heading-no-padding-bottom {
+  padding-bottom: 0;
+}
+
 .heading-title {
   display: flex;
   justify-content: space-between;
@@ -202,6 +206,38 @@ button:focus-visible {
   font-weight: 400;
   font-family: RalewayX, arial, sans-serif;
   line-height: 1.2;
+}
+
+.menu-tabs {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.tab {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: white;
+  border-radius: 0;
+  border: 0;
+}
+
+.tab:hover {
+  border: 0;
+  color: red;
+}
+
+.tab:focus,
+.tab:focus-visible,
+.tab-active {
+  outline: none;
+  border-bottom: 4px solid red;
+  color: red;
+}
+
+.about-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 }
 
 .card-container {
@@ -382,6 +418,33 @@ td {
 th {
   color: white;
   background-color: #96d4d4;
+}
+
+.time-table {
+  border-top: 10rem;
+  width: 70%;
+}
+
+.time-table-heading {
+  margin-bottom: 20px;
+  font-size: large;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.time-table-row {
+  display: flex;
+  font-size: medium;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.time-row {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  /* gap: 10px; */
+  column-gap: 10px;
 }
 
 .timetable {

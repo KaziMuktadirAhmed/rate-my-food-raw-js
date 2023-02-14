@@ -138,6 +138,23 @@ button:focus-visible {
   background-color: rgb(234, 234, 234);
 }
 
+.page-banner {
+  background-color: red;
+  /* height: 20%; */
+}
+
+.page-banner-active {
+  flex: 1 1 250px;
+  /* height: 40vh; */
+  display: flex;
+  overflow-x: scroll;
+}
+
+.banner-image {
+  height: inherit;
+  flex: 1 1 auto;
+}
+
 .page-content {
   background-color: white;
   display: flex;
