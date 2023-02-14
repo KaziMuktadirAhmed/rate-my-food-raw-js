@@ -15,14 +15,6 @@ let mainContent = document.querySelector(".main-content");
 let headingElement = document.querySelector(".heading");
 let sidebarElement = document.querySelector(".content-side-bar");
 
-// Inserting Resturant name
-headingElement.insertAdjacentHTML(
-  "afterbegin",
-  `<div class="heading-title">\
-    <h1 class="heading-name">${restaurant.name}</h1>
-  </div>`
-);
-
 // Inserting cuisine tag
 let tagMarkup = ``;
 restaurant.highlightedTag.map((item) => {
@@ -31,6 +23,32 @@ restaurant.highlightedTag.map((item) => {
 tagMarkup = `<p class="card-tags">` + tagMarkup + `</p>`;
 
 headingElement.insertAdjacentHTML("afterbegin", tagMarkup);
+
+// Inserting Resturant name
+let headingTitleMarkup = ``;
+headingTitleMarkup += `<h1 class="heading-name">${restaurant.name}</h1>`;
+restaurant.aggregateRatings.thefork;
+let {
+  aggregateRatings: {
+    thefork: { ratingValue: theforkRating, reviewCount: theforkReviewCount },
+    tripadvisor: { ratingValue: tripadvisor },
+  },
+} = restaurant;
+// console.log(thefork, tripadvisor);
+headingTitleMarkup += `
+<div>
+  <p>
+    <span class="heading-rating">${theforkRating}</span>
+    /10
+  </p>
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="17" viewBox="0 0 24 24" aria-hidden="true" focusable="false" mr="xs" alt="" class="css-igdmea e125e8xs0"><path fill-rule="evenodd" d="M10.5 3C6.365 3 3 6.365 3 10.5S6.365 18 10.5 18h3c.131 0 .26.033.372.098L18 20.458v-3.593c0-.224.1-.437.272-.579A7.478 7.478 0 0 0 21 10.5C21 6.365 17.635 3 13.5 3h-3Zm8.25 19.5a.747.747 0 0 1-.372-.098L13.301 19.5H10.5c-4.963 0-9-4.037-9-9s4.037-9 9-9h3c4.963 0 9 4.037 9 9 0 2.575-1.088 5-3 6.709v4.541a.75.75 0 0 1-.75.75Z"></path></svg>
+    ${theforkReviewCount}
+  </div>
+</div>`;
+headingTitleMarkup =
+  `<div class="heading-title">` + headingTitleMarkup + `</div>`;
+headingElement.insertAdjacentHTML("beforeend", headingTitleMarkup);
 
 // Inserting resturant address and avarage price
 headingElement.insertAdjacentHTML(
