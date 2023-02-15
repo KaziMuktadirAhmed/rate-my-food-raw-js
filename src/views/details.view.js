@@ -23,16 +23,15 @@ class ResturantDetailsView {
     setContentData("tab-about");
   }
 
-  setData() {
-    this._data = getData();
-  }
-
   render() {
-    // console.log(this._data);
     this._clearImmidieateChildsOfParentElement();
     this._addImageReel();
     this._setHeading();
     this.setContent();
+  }
+
+  setData() {
+    this._data = getData();
   }
 
   _addImageReel() {
@@ -82,11 +81,20 @@ class ResturantDetailsView {
     let contentData = getContentData();
     let contentView;
 
-    if (contentData.type === "About") {
+    if (contentData.type === "about") {
       contentView = new ResturantDetailsAboutView(contentData);
-    } else if (contentData.type === "Menu") {
-    } else if (contentData.type === "Reviews") {
+      // document.querySelector(".tab-about").classList.add("tab-active");
+    } else if (contentData.type === "menu") {
+      // document.querySelector(".tab-menu").classList.add("tab-active");
+    } else if (contentData.type === "rqeview") {
+      // document.querySelector(".tab-reviews").classList.add("tab-active");
     }
+
+    let activeTab = document.querySelector(".tab-active");
+    if (activeTab) activeTab.classList.remove("tab-active");
+    document
+      .querySelector(`.tab-${contentData.type}`)
+      .classList.add("tab-active");
 
     contentView.render();
   }

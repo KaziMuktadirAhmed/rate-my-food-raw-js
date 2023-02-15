@@ -16,7 +16,7 @@ export const getData = function () {
 export const setCurrentContent = function (type) {
   if (type === "tab-about") {
     currentContent = {
-      type: "About",
+      type: "about",
       description: data.description,
       exchangeRates: data.exchangeRates,
       openingHours: data.openingHours,
@@ -25,7 +25,7 @@ export const setCurrentContent = function (type) {
   } else if (type === "tab-menu") {
     console.log("in tab-menu");
     currentContent = {
-      type: "Menu",
+      type: "menu",
       chef: data.chefName,
       menus: data.menus,
       payAtTheTable: data.payAtTheTable,
@@ -34,7 +34,7 @@ export const setCurrentContent = function (type) {
   } else if (type === "tab-review") {
     console.log("in tab-review");
     currentContent = {
-      type: "Reviews",
+      type: "review",
       bestRating: data.bestRating,
     };
   }

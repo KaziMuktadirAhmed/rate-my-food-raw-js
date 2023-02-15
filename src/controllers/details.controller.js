@@ -1,5 +1,4 @@
 import * as model from "../models/details.model";
-// import ResturantDetailsView from "../views/details.view";
 import ResturantDetailsView from "../views/details.view";
 import { requestRestuarentDetails } from "../helpers/query";
 
