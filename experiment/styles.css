@@ -229,7 +229,6 @@ button:focus-visible {
 .tab:focus,
 .tab:focus-visible,
 .tab-active {
-  outline: none;
   border-bottom: 4px solid red;
   color: red;
 }

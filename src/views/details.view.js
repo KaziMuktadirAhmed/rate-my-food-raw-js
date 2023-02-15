@@ -36,19 +36,16 @@ class ResturantDetailsView {
 
   _addImageReel() {
     // Clear reel and showing the div on screen
-    this._clearImageReel();
-    this._bannerElement.classList.toggle("page-banner-active");
+    this._bannerElement.innerHTML = "";
+    if (!this._bannerElement.classList.contains("page-banner-active"))
+      this._bannerElement.classList.add("page-banner-active");
 
     // Generating markup for image reel
     let markup = ``;
     this._data.photos.map((item) => {
       markup += `<img src="${item.src}" class="banner-image">`;
-      this._bannerElement.insertAdjacentHTML("beforeend", markup);
     });
-  }
-
-  _clearImageReel() {
-    this._bannerElement.innerHTML = "";
+    this._bannerElement.insertAdjacentHTML("beforeend", markup);
   }
 
   _clearImmidieateChildsOfParentElement() {
@@ -77,17 +74,14 @@ class ResturantDetailsView {
   }
 
   setContent() {
-    // initializes content class
     let contentData = getContentData();
     let contentView;
 
+    // initializes content class
     if (contentData.type === "about") {
       contentView = new ResturantDetailsAboutView(contentData);
-      // document.querySelector(".tab-about").classList.add("tab-active");
     } else if (contentData.type === "menu") {
-      // document.querySelector(".tab-menu").classList.add("tab-active");
     } else if (contentData.type === "rqeview") {
-      // document.querySelector(".tab-reviews").classList.add("tab-active");
     }
 
     let activeTab = document.querySelector(".tab-active");
