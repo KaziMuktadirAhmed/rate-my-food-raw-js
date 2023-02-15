@@ -338,6 +338,33 @@ button:focus-visible {
   padding: 0px 5px 0px 5px;
 }
 
+.time-table {
+  border-top: 10rem;
+  width: 70%;
+}
+
+.time-table-heading {
+  margin-bottom: 20px;
+  font-size: large;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.time-table-row {
+  display: flex;
+  font-size: medium;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.time-row {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  /* gap: 10px; */
+  column-gap: 10px;
+}
+
 .paginate {
   display: flex;
   flex-wrap: wrap;

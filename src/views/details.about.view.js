@@ -1,87 +1,115 @@
 export default class ResturantDetailsAboutView {
   _data;
-
-  _parentElement = document.querySelector(".card-container");
+  _parentElement;
 
   constructor(data) {
     this._data = data;
 
     // Sets execution context for methods
+    this._setParentElement.bind(this);
     this.render.bind(this);
-    this._resetCardContainer.bind(this);
+    this._clearParent.bind(this);
+    this._parseTimeTable.bind(this);
+    this._renderTimetable.bind(this);
 
-    // Reset div
+    // Select parent
+    this._setParentElement();
+  }
+
+  _setParentElement() {
+    let temp = document.querySelector(".card-container");
+    if (temp) {
+      this._parentElement = temp;
+      this._parentElement.classList.remove("card-container");
+      this._parentElement.classList.add("about-tab");
+    } else this._parentElement = document.querySelector(".about-tab");
   }
 
   render() {
     console.log("ok inside:", this);
-    this._resetCardContainer();
+    this._clearParent();
+    this._renderTimetable();
   }
 
-  _resetCardContainer() {
+  _clearParent() {
     this._parentElement.innerHTML = "";
-    if (this._parentElement.classList.contains("card-container")) {
-      this._parentElement.classList.remove("card-container");
-      this._parentElement.classList.add("about-tab");
-    }
   }
 
   _parseTimeTable() {
-    function formatOpeningHoursMarkup(openingHoursString) {
-      let OpeningHoursArray = openingHoursString
-        .split("\r\n")
-        .filter((item) => item.length > 0)
-        .map((item) => {
-          let day,
-            tokens = item.split(",").map((item) => item.trim()),
-            times = tokens.map((item) =>
-              item.split("-").map((item) => item.trim())
-            );
+    let OpeningHoursArray = this._data.openingHours
+      .split("\r\n")
+      .filter((item) => item.length > 0)
+      .map((item) => {
+        let day,
+          tokens = item.split(",").map((item) => item.trim()),
+          times = tokens.map((item) =>
+            item.split("-").map((item) => item.trim())
+          );
 
-          let final = times.map((item) => {
-            let start,
-              end = item[1];
+        let final = times.map((item) => {
+          let start,
+            end = item[1];
 
-            if (item[0].includes(" ")) {
-              day = item[0].split(" ")[0];
-              start = item[0].split(" ")[1];
-            } else {
-              start = item[0];
-            }
-            return { start, end };
-          });
-          return { day: day, time: final };
+          if (item[0].includes(" ")) {
+            day = item[0].split(" ")[0];
+            start = item[0].split(" ")[1];
+          } else {
+            start = item[0];
+          }
+          return {
+            start: this.convert12HrTimeFormat(start),
+            end: this.convert12HrTimeFormat(end),
+          };
         });
+        return { day: day, time: final };
+      });
+    return OpeningHoursArray;
+  }
 
-      let openingHoursMarkup = ``;
+  convert12HrTimeFormat(timeString) {
+    let [hr, min] = timeString.split(":").map((item) => parseInt(item)),
+      tailingStr = ``;
+    if (hr > 11) tailingStr = "PM";
+    else tailingStr = "AM";
 
-      if (OpeningHoursArray.length > 0) {
-        openingHoursMarkup += `
-        <table class="timetable">
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Start time</th>
-              <th>End time</th>
-            </tr>
-          </thead>`;
-        OpeningHoursArray.map((item) => {
-          openingHoursMarkup += `
-          <tr>
-            <td rowspan="3" class="cell-color-day">${item.day}</td>`;
-          item.time.map((it, index) => {
-            if (index > 0) openingHoursMarkup += `<tr>`;
-            openingHoursMarkup += `
-              <td>${it.start}</td>
-              <td>${it.end}</td>
-            </tr>`;
-          });
-        });
-        openingHoursMarkup += `
-        </table>`;
-      }
+    if (hr > 12) hr -= 12;
+    else if (hr === 0) hr = 12;
 
-      return { openingHoursMarkup, OpeningHoursArray };
-    }
+    return `${`${hr}`.padStart(2, "0")}:${`${min}`.padStart(
+      2,
+      "0"
+    )} ${tailingStr}`;
+  }
+
+  _renderTimetable() {
+    let timeTable = this._parseTimeTable();
+    let markup = `
+    <div class="time-table">
+      <h3 class="time-table-heading">Opening Hours</h3>
+      <div class="time-table-list">`;
+    timeTable.map((item) => {
+      markup += `
+        <div class="time-table-row">
+          <div style="min-width: 8rem;">${item.day}</div>
+          <div class="time-row">`;
+      let len = item.time.length;
+      item.time.map((t, index) => {
+        markup += `
+            <div> ${t.start} - ${t.end} </div>`;
+        if (index < len - 1)
+          markup += `
+            <div>
+              <span>•</span>
+            </div>`;
+      });
+      markup += `
+          </div>
+        </div>`;
+    });
+    markup += `
+      </div>
+    </div>`;
+
+    this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 }
