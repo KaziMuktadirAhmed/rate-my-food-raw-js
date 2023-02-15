@@ -209,6 +209,38 @@ button:focus-visible {
   line-height: 1.2;
 }
 
+.menu-tabs {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.tab {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: white;
+  border-radius: 0;
+  border: 0;
+}
+
+.tab:hover {
+  border: 0;
+  color: red;
+}
+
+.tab:focus,
+.tab:focus-visible,
+.tab-active {
+  outline: none;
+  border-bottom: 4px solid red;
+  color: red;
+}
+
+.about-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
 .card-container {
   background-color: white;
 }

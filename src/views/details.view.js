@@ -66,6 +66,8 @@ class ResturantDetails {
       name: this._data.name,
       rating: { ratingValue, reviewCount },
       address: this._data.address,
+      currency: this._data.acceptedCurrency,
+      averagePrice: this._data.averagePrice,
     });
 
     heading.render();
