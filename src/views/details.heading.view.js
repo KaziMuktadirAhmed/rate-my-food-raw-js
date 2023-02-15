@@ -1,3 +1,5 @@
+import { setContentData } from "../controllers/details.controller";
+
 export default class ResturantDetailsHeadingView {
   _data;
   _parentElement = document.querySelector(".heading");
@@ -7,6 +9,7 @@ export default class ResturantDetailsHeadingView {
 
     // Sets execution context for function.
     this.render.bind(this);
+    this._addsEventHandler.bind(this);
   }
 
   render() {
@@ -14,6 +17,9 @@ export default class ResturantDetailsHeadingView {
     this._renderTitle();
     this._renderAdditionalHeadingInfo();
     this._renderTabsMenu();
+
+    // Adds event handlers
+    this._addsEventHandler();
   }
 
   _renderTags() {
@@ -70,5 +76,25 @@ export default class ResturantDetailsHeadingView {
 </div>`;
     this._parentElement.classList.toggle("heading-no-padding-bottom");
     this._parentElement.insertAdjacentHTML("beforeend", tabsMarkup);
+  }
+
+  _addsEventHandler() {
+    let btns = document.querySelectorAll(".tab");
+    btns.forEach((btn) =>
+      btn.addEventListener("click", this._handelClick.bind(this))
+    );
+  }
+
+  _handelClick(event) {
+    event.preventDefault();
+    let btn = event.target.closest(".tab");
+
+    if (btn.classList.contains("tab-about")) {
+      setContentData("tab-about");
+    } else if (btn.classList.contains("tab-menu")) {
+      setContentData("tab-menu");
+    } else if (btn.classList.contains("tab-review")) {
+      setContentData("tab-review");
+    }
   }
 }

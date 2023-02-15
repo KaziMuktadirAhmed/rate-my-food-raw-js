@@ -1,7 +1,7 @@
 import { resturantDetails } from "../../experiment/mockDB";
 import ResturantDetailsHeadingView from "./details.heading.view";
 
-class ResturantDetails {
+class ResturantDetailsView {
   _data;
 
   _parentElement = document.querySelector(".main-content");
@@ -10,6 +10,7 @@ class ResturantDetails {
   constructor() {
     // Sets the execution context for functions
     this.setData.bind(this);
+    this.setContent.bind(this);
     this.render.bind(this);
     this._setHeading.bind(this);
 
@@ -72,6 +73,12 @@ class ResturantDetails {
 
     heading.render();
   }
+
+  setContent() {
+    // initializes content class
+    // let content;
+    console.log("ok in");
+  }
 }
 
-export default new ResturantDetails();
+export default new ResturantDetailsView();
