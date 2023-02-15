@@ -1,4 +1,6 @@
 import { resturantDetails } from "../../experiment/mockDB";
+import { getContentData } from "../models/details.model";
+import ResturantDetailsAboutView from "./details.about.view";
 import ResturantDetailsHeadingView from "./details.heading.view";
 
 class ResturantDetailsView {
@@ -30,6 +32,7 @@ class ResturantDetailsView {
     this._clearImmidieateChildsOfParentElement();
     this._addImageReel();
     this._setHeading();
+    this.setContent();
   }
 
   _addImageReel() {
@@ -76,8 +79,13 @@ class ResturantDetailsView {
 
   setContent() {
     // initializes content class
-    // let content;
-    console.log("ok in");
+    let contentData = getContentData();
+    console.log(contentData);
+
+    let contentView = new ResturantDetailsAboutView(contentData);
+    contentView.render();
+
+    // Get content data from model
   }
 }
 

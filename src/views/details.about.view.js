@@ -1,4 +1,4 @@
-export default class DetailsAboutView {
+export default class ResturantDetailsAboutView {
   _data;
 
   //   _parentElement = document.querySelector();
@@ -7,5 +7,7 @@ export default class DetailsAboutView {
     this._data = data;
   }
 
-  render() {}
+  render() {
+    console.log("ok inside");
+  }
 }
