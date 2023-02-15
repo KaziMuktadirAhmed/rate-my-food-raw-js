@@ -12,6 +12,7 @@ class App {
   _locationInput = document.querySelector(".location-input");
   _resturantInput = document.querySelector(".resturant-input");
   _searchBtn = document.querySelector(".search_btn");
+  _loginBtn = document.querySelector(".btn_login");
 
   constructor() {
     console.log(
@@ -25,6 +26,10 @@ class App {
     this._searchBtn.addEventListener("click", (event) =>
       this.handelClickSearchBtn(event)
     );
+    this._loginBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      ResturantDetails.render();
+    });
 
     // Renders initial layout
     contentsView.render();
@@ -43,9 +48,6 @@ class App {
         setLocationSearchResult(locationText);
       else if (locationText.length <= 2 && restaurantText.length > 2)
         setResutarantNameSearchResult(restaurantText);
-      else {
-        ResturantDetails.render();
-      }
     } catch (error) {
       console.error("In app.js: ", error);
     }
