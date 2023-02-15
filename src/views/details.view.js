@@ -1,5 +1,5 @@
-import { resturantDetails } from "../../experiment/mockDB";
-import { getContentData } from "../models/details.model";
+import { setContentData } from "../controllers/details.controller";
+import { getContentData, getData } from "../models/details.model";
 import ResturantDetailsAboutView from "./details.about.view";
 import ResturantDetailsHeadingView from "./details.heading.view";
 
@@ -18,13 +18,13 @@ class ResturantDetailsView {
 
     // Sets component data
     this.setData();
+
+    // Set initial content data
+    setContentData("tab-about");
   }
 
   setData() {
-    let {
-      data: { restaurant },
-    } = resturantDetails;
-    this._data = restaurant;
+    this._data = getData();
   }
 
   render() {
@@ -80,12 +80,15 @@ class ResturantDetailsView {
   setContent() {
     // initializes content class
     let contentData = getContentData();
-    console.log(contentData);
+    let contentView;
 
-    let contentView = new ResturantDetailsAboutView(contentData);
+    if (contentData.type === "About") {
+      contentView = new ResturantDetailsAboutView(contentData);
+    } else if (contentData.type === "Menu") {
+    } else if (contentData.type === "Reviews") {
+    }
+
     contentView.render();
-
-    // Get content data from model
   }
 }
 

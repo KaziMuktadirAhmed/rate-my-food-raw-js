@@ -1,34 +1,41 @@
-let _data;
+import { resturantDetails } from "../../experiment/mockDB";
+let {
+  data: { restaurant },
+} = resturantDetails;
+let data = restaurant;
 let currentContent;
 
-export const setData = function (data) {
-  _data = data;
+export const setData = function (input) {
+  data = input;
+};
+
+export const getData = function () {
+  return data;
 };
 
 export const setCurrentContent = function (type) {
   if (type === "tab-about") {
-    console.log("in tab-about");
     currentContent = {
       type: "About",
-      description: _data.description,
-      exchangeRates: _data.exchangeRates,
-      openingHours: _data.openingHours,
-      additionalProperty: _data.additionalProperty,
+      description: data.description,
+      exchangeRates: data.exchangeRates,
+      openingHours: data.openingHours,
+      additionalProperty: data.additionalProperty,
     };
   } else if (type === "tab-menu") {
     console.log("in tab-menu");
     currentContent = {
       type: "Menu",
-      chef: _data.chefName,
-      menus: _data.menus,
-      payAtTheTable: _data.payAtTheTable,
-      safetyMeasures: _data.safetyMeasures,
+      chef: data.chefName,
+      menus: data.menus,
+      payAtTheTable: data.payAtTheTable,
+      safetyMeasures: data.safetyMeasures,
     };
   } else if (type === "tab-review") {
     console.log("in tab-review");
     currentContent = {
       type: "Reviews",
-      bestRating: _data.bestRating,
+      bestRating: data.bestRating,
     };
   }
 };

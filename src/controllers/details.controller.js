@@ -10,7 +10,10 @@ export const setDetailsData = async function (resturant_id) {
 
 export const setContentData = function (content_type) {
   model.setCurrentContent(content_type);
-  ResturantDetailsView.setContent();
 };
 
+export const controlContents = function (content_type) {
+  setContentData(content_type);
+  ResturantDetailsView.setContent();
+};
 // export const set

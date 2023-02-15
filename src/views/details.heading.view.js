@@ -1,4 +1,7 @@
-import { setContentData } from "../controllers/details.controller";
+import {
+  controlContents,
+  setContentData,
+} from "../controllers/details.controller";
 
 export default class ResturantDetailsHeadingView {
   _data;
@@ -90,11 +93,11 @@ export default class ResturantDetailsHeadingView {
     let btn = event.target.closest(".tab");
 
     if (btn.classList.contains("tab-about")) {
-      setContentData("tab-about");
+      controlContents("tab-about");
     } else if (btn.classList.contains("tab-menu")) {
-      setContentData("tab-menu");
+      controlContents("tab-menu");
     } else if (btn.classList.contains("tab-review")) {
-      setContentData("tab-review");
+      controlContents("tab-review");
     }
   }
 }
