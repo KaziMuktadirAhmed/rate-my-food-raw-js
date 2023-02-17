@@ -4,6 +4,7 @@ import {
   setResutarantNameSearchResult,
   setBothSearchResult,
 } from "./controllers/contents.controller";
+import ResturantDetailsView from "./views/details.view";
 
 /// Ok
 
@@ -11,9 +12,12 @@ class App {
   _locationInput = document.querySelector(".location-input");
   _resturantInput = document.querySelector(".resturant-input");
   _searchBtn = document.querySelector(".search_btn");
+  _loginBtn = document.querySelector(".btn_login");
 
   constructor() {
-    console.log("App started");
+    console.log(
+      "App started\nInitial card data are impotred from a mock db file sarch using the searchbar to get new results"
+    );
 
     // sets execution context
     this.handelClickSearchBtn.bind(this);
@@ -22,6 +26,10 @@ class App {
     this._searchBtn.addEventListener("click", (event) =>
       this.handelClickSearchBtn(event)
     );
+    this._loginBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      ResturantDetailsView.render();
+    });
 
     // Renders initial layout
     contentsView.render();

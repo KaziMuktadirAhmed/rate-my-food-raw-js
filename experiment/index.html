@@ -2,7 +2,8 @@
   <head>
     <title>Rate my food</title>
     <link href="styles.css" rel="stylesheet" />
-    <script defer type="module" src="src/app.js"></script>
+    <script type="module" src="test.js"></script>
+    <!-- <script type="module" src="mockDB.js"></script> -->
   </head>
   <body>
     <div class="page-container">
@@ -36,7 +37,7 @@
           </div>
         </div>
       </header>
-      <div class="page-banner"></div>
+      <div class="page-banner page-banner-active"></div>
       <main class="page-content">
         <aside class="content-navigation">
           <h1>Navigation</h1>
@@ -45,16 +46,10 @@
           <div class="main-content">
             <div class="heading"></div>
             <div class="card-container"></div>
-            <div class="paginate">
-              <button class="btn-paginate">prev</button>
-              <div class="paginate-icon"></div>
-              <button class="btn-paginate">next</button>
-            </div>
+            <div class="paginate"></div>
           </div>
         </article>
-        <aside class="content-side-bar">
-          <h1>Sidebar</h1>
-        </aside>
+        <aside class="content-side-bar"></aside>
       </main>
       <footer class="page-footer">
         <h1>Footer content</h1>

@@ -66,9 +66,9 @@ class ContentsView {
 
   setHeading() {
     this._headingElement.innerHTML = "";
-    let markup = `Showing ${
+    let markup = `<h1 class="heading-name">Showing ${
       this._data.length
-    } out of ${getTotalDataLength()} search results`;
+    } out of ${getTotalDataLength()} search results</h1>`;
     this._headingElement.innerHTML = markup;
   }
 }
