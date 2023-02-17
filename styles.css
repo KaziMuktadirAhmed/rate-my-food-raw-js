@@ -238,7 +238,25 @@ button:focus-visible {
 .about-tab {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.offers {
+  height: 300px;
+  /* width: inherit; */
+  margin: 0 5px 10px 5px;
+  padding: 10px;
+  background-color: hsl(120, 60%, 97%);
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+}
+
+.offer-card {
+  width: 250px;
+  background-color: white;
+  padding: 5px;
 }
 
 .card-container {
@@ -339,7 +357,6 @@ button:focus-visible {
 }
 
 .time-table {
-  border-top: 10rem;
   width: 70%;
 }
 

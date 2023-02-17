@@ -10,6 +10,7 @@ export default class ResturantDetailsAboutView {
     this.render.bind(this);
     this._clearParent.bind(this);
     this._parseTimeTable.bind(this);
+    this._renderOffersTab.bind(this);
     this._renderTimetable.bind(this);
 
     // Select parent
@@ -28,6 +29,7 @@ export default class ResturantDetailsAboutView {
   render() {
     console.log("ok inside:", this);
     this._clearParent();
+    this._renderOffersTab();
     this._renderTimetable();
   }
 
@@ -110,6 +112,20 @@ export default class ResturantDetailsAboutView {
       </div>
     </div>`;
 
+    this._parentElement.insertAdjacentHTML("beforeend", markup);
+  }
+
+  _renderOffersTab() {
+    let markup = `
+    <div class="offers">`;
+    this._data.offers.map((item) => {
+      markup += `
+      <div class="offer-card shadow">
+
+      </div>`;
+    });
+    markup += `
+  </div>`;
     this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 }

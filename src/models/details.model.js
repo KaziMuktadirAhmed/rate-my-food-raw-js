@@ -21,6 +21,7 @@ export const setCurrentContent = function (type) {
       exchangeRates: data.exchangeRates,
       openingHours: data.openingHours,
       additionalProperty: data.additionalProperty,
+      offers: data.offers,
     };
   } else if (type === "tab-menu") {
     console.log("in tab-menu");

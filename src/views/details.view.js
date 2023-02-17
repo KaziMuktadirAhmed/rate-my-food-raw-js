@@ -86,6 +86,7 @@ class ResturantDetailsView {
 
     let activeTab = document.querySelector(".tab-active");
     if (activeTab) activeTab.classList.remove("tab-active");
+
     document
       .querySelector(`.tab-${contentData.type}`)
       .classList.add("tab-active");
