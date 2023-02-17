@@ -251,12 +251,13 @@ button:focus-visible {
 
 .offers-box {
   height: 280px;
+  width: 1000px;
   padding: 20px;
   background-color: hsl(0, 5%, 92%);
   display: flex;
   gap: 20px;
   align-items: center;
-  overflow-x: scroll;
+  overflow-x: hidden;
 }
 
 .offer-card {
@@ -289,6 +290,19 @@ button:focus-visible {
 .offer-card-button:hover {
   color: red;
   border: 2px solid red;
+}
+
+.about-description {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.about-transport {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .card-container {

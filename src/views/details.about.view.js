@@ -11,7 +11,9 @@ export default class ResturantDetailsAboutView {
     this._clearParent.bind(this);
     this._parseTimeTable.bind(this);
     this._renderOffersTab.bind(this);
+    this._renderDescriptions.bind(this);
     this._renderTimetable.bind(this);
+    this._renderTransportation.bind(this);
 
     // Select parent
     this._setParentElement();
@@ -31,6 +33,8 @@ export default class ResturantDetailsAboutView {
     this._clearParent();
     this._renderOffersTab();
     this._renderTimetable();
+    this._renderDescriptions();
+    this._renderTransportation();
   }
 
   _clearParent() {
@@ -104,6 +108,7 @@ export default class ResturantDetailsAboutView {
               <span>•</span>
             </div>`;
       });
+      if (len === 0) markup += `<div> Closed </div>`;
       markup += `
           </div>
         </div>`;
@@ -135,6 +140,27 @@ export default class ResturantDetailsAboutView {
     </div>
   </div>
   `;
+    this._parentElement.insertAdjacentHTML("beforeend", markup);
+  }
+
+  _renderDescriptions() {
+    let markup = `
+  <div class="about-description">
+    <h2>About Us</h2>
+    <p>${this._data.description}</p>`;
+    markup += `
+  </div>`;
+    this._parentElement.insertAdjacentHTML("beforeend", markup);
+  }
+
+  _renderTransportation() {
+    let markup = `
+    <div class="about-transport">
+      <h2>Transportation</h2>
+      <div>${this._data.additionalProperty.transport}</div>
+      <h2>Parking</h2>
+      <div>${this._data.additionalProperty.parking}</div>
+    </div>`;
     this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 }
