@@ -87,7 +87,7 @@ export default class ResturantDetailsAboutView {
     let timeTable = this._parseTimeTable();
     let markup = `
     <div class="time-table">
-      <h3 class="time-table-heading">Opening Hours</h3>
+      <h2 class="time-table-heading">Opening Hours</h2>
       <div class="time-table-list">`;
     timeTable.map((item) => {
       markup += `
@@ -117,15 +117,24 @@ export default class ResturantDetailsAboutView {
 
   _renderOffersTab() {
     let markup = `
-    <div class="offers">`;
+  <div class="offers">
+    <h2 class="offers-title">Offers</h2>
+    <div class="offers-box shadow">`;
     this._data.offers.map((item) => {
       markup += `
       <div class="offer-card shadow">
-
+        <div>
+          <span class="offer-tag">${item.label}</span>
+          <span>${item.name}</span>
+        </div>
+        <p>${item.description}</p>
+        <button class="offer-card-button">Book this menu</button>
       </div>`;
     });
     markup += `
-  </div>`;
+    </div>
+  </div>
+  `;
     this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 }

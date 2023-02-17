@@ -2,8 +2,6 @@ import { cardModelData } from "./mockDB";
 
 const resultsPerPage = 6;
 let data = [];
-
-// for (let i = 0; i < 100; i++) data[i] = `Data no: ${i + 1}`;
 data = cardModelData;
 
 export const setData = function (arr) {

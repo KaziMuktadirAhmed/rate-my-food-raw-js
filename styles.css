@@ -225,6 +225,7 @@ button:focus-visible {
 .tab:hover {
   border: 0;
   color: red;
+  border-bottom: 4px solid red;
 }
 
 .tab:focus,
@@ -242,21 +243,52 @@ button:focus-visible {
   margin-top: 2rem;
 }
 
-.offers {
-  height: 300px;
-  /* width: inherit; */
-  margin: 0 5px 10px 5px;
-  padding: 10px;
-  background-color: hsl(120, 60%, 97%);
+.offers-title {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-bottom: 20px;
+}
+
+.offers-box {
+  height: 280px;
+  padding: 20px;
+  background-color: hsl(0, 5%, 92%);
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  align-items: center;
   overflow-x: scroll;
 }
 
 .offer-card {
-  width: 250px;
+  height: 200px;
+  flex: 0 0 290px;
   background-color: white;
-  padding: 5px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  justify-content: space-between;
+}
+
+.offer-tag {
+  background-color: black;
+  color: white;
+  align-self: center;
+  padding: 2px 4px 2px 4px;
+  border-radius: 4px;
+  margin: 0 6px 5px 0;
+}
+
+.offer-card-button {
+  background-color: white;
+  border: 2px solid black;
+}
+
+.offer-card-button:hover {
+  color: red;
+  border: 2px solid red;
 }
 
 .card-container {
@@ -350,19 +382,16 @@ button:focus-visible {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Luc ida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   border-left: 3px solid black;
-  /* background-color: rgb(255, 221, 0, 1); */
-  /* color: white; */
-  /* background-color: rgb(39, 42, 47); */
   padding: 0px 5px 0px 5px;
 }
 
 .time-table {
-  width: 70%;
+  width: 60%;
 }
 
 .time-table-heading {
   margin-bottom: 20px;
-  font-size: large;
+  /* font-size: large; */
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
