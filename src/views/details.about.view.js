@@ -20,12 +20,19 @@ export default class ResturantDetailsAboutView {
   }
 
   _setParentElement() {
-    let temp = document.querySelector(".card-container");
-    if (temp) {
-      this._parentElement = temp;
-      this._parentElement.classList.remove("card-container");
-      this._parentElement.classList.add("about-tab");
-    } else this._parentElement = document.querySelector(".about-tab");
+    let containerElement = document.querySelector(".main-content");
+    for (let i = 0; i < containerElement.children.length; i++) {
+      let temp = containerElement.children[i];
+      if (
+        temp.classList.contains("card-container") ||
+        temp.classList.contains("about-tab") ||
+        temp.classList.contains("menu-tab") ||
+        temp.classList.contains("review-tab")
+      ) {
+        temp.className = "about-tab";
+        this._parentElement = temp;
+      }
+    }
   }
 
   render() {
