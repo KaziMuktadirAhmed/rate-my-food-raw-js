@@ -147,7 +147,9 @@ export default class ResturantDetailsAboutView {
     </div>
   </div>
   `;
-    this._parentElement.insertAdjacentHTML("beforeend", markup);
+
+    if (this._data.offers.length > 0)
+      this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 
   _renderDescriptions() {
@@ -157,17 +159,24 @@ export default class ResturantDetailsAboutView {
     <p>${this._data.description}</p>`;
     markup += `
   </div>`;
-    this._parentElement.insertAdjacentHTML("beforeend", markup);
+    if (this._data.description)
+      this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 
   _renderTransportation() {
     let markup = `
-    <div class="about-transport">
+    <div class="about-transport">`;
+    if (this._data.additionalProperty.transport) {
+      markup += `
       <h2>Transportation</h2>
-      <div>${this._data.additionalProperty.transport}</div>
+        <div>${this._data.additionalProperty.transport}</div>`;
+    }
+    if (this._data.additionalProperty.parking) {
+      markup += `
       <h2>Parking</h2>
-      <div>${this._data.additionalProperty.parking}</div>
-    </div>`;
+        <div>${this._data.additionalProperty.parking}</div>`;
+    }
+    markup += `</div>`;
     this._parentElement.insertAdjacentHTML("beforeend", markup);
   }
 }
