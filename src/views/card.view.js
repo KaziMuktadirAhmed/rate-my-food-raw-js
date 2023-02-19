@@ -8,13 +8,15 @@ export default class CardView {
 
   constructor(data = undefined) {
     this._data = data;
-    this._setParent();
 
     // setting up execution context for methods
     this._generateMarkup.bind(this);
     this.filterData.bind(this);
     this.render.bind(this);
     this._addCardEventHandler.bind(this);
+    this._setParent.bind(this);
+
+    this._setParent();
   }
 
   _setParent() {

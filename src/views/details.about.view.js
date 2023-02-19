@@ -31,6 +31,7 @@ export default class ResturantDetailsAboutView {
       ) {
         temp.className = "about-tab";
         this._parentElement = temp;
+        break;
       }
     }
   }
@@ -38,6 +39,7 @@ export default class ResturantDetailsAboutView {
   render() {
     console.log("ok inside:", this);
     this._clearParent();
+
     this._renderOffersTab();
     this._renderTimetable();
     this._renderDescriptions();

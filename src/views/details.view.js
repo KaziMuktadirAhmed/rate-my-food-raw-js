@@ -1,6 +1,7 @@
 import { setContentData } from "../controllers/details.controller";
 import { getContentData, getData } from "../models/details.model";
 import ResturantDetailsAboutView from "./details.about.view";
+import ResturantDetailsMenuView from "./details.menu.view";
 import ResturantDetailsHeadingView from "./details.heading.view";
 
 class ResturantDetailsView {
@@ -83,6 +84,7 @@ class ResturantDetailsView {
     if (contentData.type === "about") {
       contentView = new ResturantDetailsAboutView(contentData);
     } else if (contentData.type === "menu") {
+      contentView = new ResturantDetailsMenuView(contentData);
     } else if (contentData.type === "review") {
     }
 

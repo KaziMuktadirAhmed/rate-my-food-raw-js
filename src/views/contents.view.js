@@ -22,9 +22,12 @@ class ContentsView {
     this.setPageContents.bind(this);
     this.setHeading.bind(this);
     this.setPagination.bind(this);
+    this.resetCardContainer.bind(this);
+    this.resetPage.bind(this);
   }
 
   render() {
+    this.resetPage();
     this.setPageContents();
     this.setPagination();
   }
@@ -33,7 +36,27 @@ class ContentsView {
     this._data = getSearchResultsPage(this._currentPage);
   }
 
-  clearCardContainer() {
+  resetPage() {
+    // Reset banner
+    let banner = document.querySelector(".page-banner");
+    banner.classList.remove("page-banner-active");
+    this.resetCardContainer();
+  }
+
+  resetCardContainer() {
+    for (let i = 0; i < this._parentElement.children.length; i++) {
+      let temp = this._parentElement.children[i];
+      if (
+        temp.classList.contains("card-container") ||
+        temp.classList.contains("about-tab") ||
+        temp.classList.contains("menu-tab") ||
+        temp.classList.contains("review-tab")
+      ) {
+        temp.className = "card-container";
+        this._cardContainer = temp;
+        break;
+      }
+    }
     this._cardContainer.innerHTML = "";
   }
 
@@ -46,7 +69,6 @@ class ContentsView {
 
   setPageContents() {
     this.getCardsDataForCurrentPage();
-    this.clearCardContainer();
     let cards = this._data.map((item) => new CardView(item).render());
     this._parentElement.scrollIntoView({
       behavior: "smooth",

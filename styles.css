@@ -140,6 +140,7 @@ button:focus-visible {
 
 .page-banner {
   background-color: red;
+  display: none;
   /* height: 20%; */
 }
 
