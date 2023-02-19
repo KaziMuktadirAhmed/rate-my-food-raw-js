@@ -207,13 +207,13 @@ export default class ResturantDetailsAboutView {
   }
 
   _generateMenuItemPreviewMarkup(item) {
-    let markup = `<div class="preview-menu-item">`;
-    // items.map((item) => {
+    let markup = `
+    <div class="preview-menu-item">`;
     markup += `
-                <p>${item.name}</p>
-                <p>${item.price}</p>`;
-    // });
-    markup += "</div>";
+      <p>${item.name}</p>
+      <p>${item.price}</p>`;
+    markup += `
+    </div>`;
     return markup;
   }
 }
