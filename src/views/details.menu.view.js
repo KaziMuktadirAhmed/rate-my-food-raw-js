@@ -10,6 +10,8 @@ export default class ResturantDetailsAboutView {
     this._setParentElement.bind(this);
     this._clearParent.bind(this);
     this.render.bind(this);
+    this._renderMenuSections.bind(this);
+    this._renderChefName.bind(this);
 
     // Select parent
     this._setParentElement();
@@ -32,11 +34,24 @@ export default class ResturantDetailsAboutView {
     }
   }
 
+  _generateMarkup() {}
+
   render() {
     this._clearParent();
+    this._renderChefName();
+    console.log(this._data);
   }
 
   _clearParent() {
     this._parentElement.innerHTML = "";
+  }
+
+  _renderMenuSections() {}
+
+  _renderChefName() {
+    if (this._data.chef) {
+      let markup = `<h3 class="menu-chef-name">Chef name: ${this._data.chef}</h3>`;
+      this._parentElement.insertAdjacentHTML("beforeend", markup);
+    }
   }
 }

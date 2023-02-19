@@ -14,6 +14,7 @@ export default class ResturantDetailsAboutView {
     this._renderDescriptions.bind(this);
     this._renderTimetable.bind(this);
     this._renderTransportation.bind(this);
+    this._renderMenuPreview.bind(this);
 
     // Select parent
     this._setParentElement();
@@ -41,6 +42,7 @@ export default class ResturantDetailsAboutView {
     this._clearParent();
 
     this._renderOffersTab();
+    this._renderMenuPreview();
     this._renderTimetable();
     this._renderDescriptions();
     this._renderTransportation();
@@ -189,5 +191,29 @@ export default class ResturantDetailsAboutView {
     }
     markup += `</div>`;
     this._parentElement.insertAdjacentHTML("beforeend", markup);
+  }
+
+  _renderMenuPreview() {
+    let markup = `<div class="about-menu-preview">`;
+    markup += `<h1>Resturant Menu</h1>`;
+    if (this._data.chef)
+      markup += `<h3 class="menu-chef-name">Chef name: ${this._data.chef}</h3>`;
+
+    this._data.menus.map((item) => {
+      markup += this._generateMenuItemPreviewMarkup(item);
+    });
+    markup += `</div>`;
+    this._parentElement.insertAdjacentHTML("beforeend", markup);
+  }
+
+  _generateMenuItemPreviewMarkup(item) {
+    let markup = `<div class="preview-menu-item">`;
+    // items.map((item) => {
+    markup += `
+                <p>${item.name}</p>
+                <p>${item.price}</p>`;
+    // });
+    markup += "</div>";
+    return markup;
   }
 }
