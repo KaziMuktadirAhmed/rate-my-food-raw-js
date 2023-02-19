@@ -104,6 +104,8 @@ export default class ResturantDetailsAboutView {
   }
 
   _renderTimetable() {
+    if (!this._data.openingHours) return;
+
     let timeTable = this._parseTimeTable();
     let markup = `
     <div class="time-table">

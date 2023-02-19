@@ -39,7 +39,8 @@ class ContentsView {
   resetPage() {
     // Reset banner
     let banner = document.querySelector(".page-banner");
-    banner.classList.remove("page-banner-active");
+    if (banner.classList.contains("page-banner-active"))
+      banner.classList.remove("page-banner-active");
     this.resetCardContainer();
   }
 
@@ -69,6 +70,7 @@ class ContentsView {
 
   setPageContents() {
     this.getCardsDataForCurrentPage();
+    this.resetCardContainer();
     let cards = this._data.map((item) => new CardView(item).render());
     this._parentElement.scrollIntoView({
       behavior: "smooth",

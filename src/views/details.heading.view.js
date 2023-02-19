@@ -33,7 +33,8 @@ export default class ResturantDetailsHeadingView {
 
   _renderTitle() {
     let headingTitleMarkup = `<h1 class="heading-name">${this._data.name}</h1>`;
-    headingTitleMarkup += `
+    if (this._data.rating.ratingValue) {
+      headingTitleMarkup += `
 <div>
   <p>
     <span class="heading-rating">${this._data.rating.ratingValue}</span>
@@ -44,6 +45,7 @@ export default class ResturantDetailsHeadingView {
     ${this._data.rating.reviewCount}
   </div>
 </div>`;
+    }
     headingTitleMarkup =
       `<div class="heading-title">` + headingTitleMarkup + `</div>`;
     this._parentElement.insertAdjacentHTML("beforeend", headingTitleMarkup);
