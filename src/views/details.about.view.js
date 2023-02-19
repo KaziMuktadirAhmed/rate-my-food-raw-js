@@ -49,25 +49,32 @@ export default class ResturantDetailsAboutView {
         let day,
           tokens = item.split(",").map((item) => item.trim()),
           times = tokens.map((item) =>
-            item.split("-").map((item) => item.trim())
+            item.split("-").map((item) => {
+              return item.trim();
+            })
           );
 
-        let final = times.map((item) => {
-          let start,
-            end = item[1];
+        let final = times
+          .map((item, index) => {
+            let start,
+              end = item[1];
 
-          if (item[0].includes(" ")) {
-            day = item[0].split(" ")[0];
-            start = item[0].split(" ")[1];
-          } else {
-            start = item[0];
-          }
-          return {
-            start: this.convert12HrTimeFormat(start),
-            end: this.convert12HrTimeFormat(end),
-          };
-        });
-        return { day: day, time: final };
+            if (item[0].includes(" ") && index === 0) {
+              day = item[0].split(" ")[0];
+              start = item[0].split(" ")[1];
+            } else if (index === 0 && !item[0].includes(" ")) {
+              day = item[0];
+              return;
+            } else {
+              start = item[0];
+            }
+            return {
+              start: this.convert12HrTimeFormat(start),
+              end: this.convert12HrTimeFormat(end),
+            };
+          })
+          .filter((item) => item !== undefined);
+        return { day, time: final };
       });
     return OpeningHoursArray;
   }
@@ -101,7 +108,7 @@ export default class ResturantDetailsAboutView {
       let len = item.time.length;
       item.time.map((t, index) => {
         markup += `
-            <div> ${t.start} - ${t.end} </div>`;
+        <div> ${t.start} - ${t.end} </div>`;
         if (index < len - 1)
           markup += `
             <div>

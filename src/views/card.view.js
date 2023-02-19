@@ -1,3 +1,6 @@
+import ResturantDetailsView from "./details.view";
+import { setDetailsData } from "../controllers/details.controller";
+
 export default class CardView {
   _data;
   _parentElement;
@@ -94,8 +97,11 @@ export default class CardView {
   _addCardEventHandler() {
     this._currentElement.addEventListener("click", (event) => {
       event.preventDefault();
-      if (this._data.menus !== undefined) console.log("inside card", this);
-      else console.log("not this", this);
+      if (this._data.menus !== undefined) {
+        setDetailsData(null, this._data);
+      } else {
+        setDetailsData(this._data.id);
+      }
     });
   }
 }

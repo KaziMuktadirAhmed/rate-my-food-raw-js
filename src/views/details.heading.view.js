@@ -1,7 +1,4 @@
-import {
-  controlContents,
-  setContentData,
-} from "../controllers/details.controller";
+import { controlContents } from "../controllers/details.controller";
 
 export default class ResturantDetailsHeadingView {
   _data;

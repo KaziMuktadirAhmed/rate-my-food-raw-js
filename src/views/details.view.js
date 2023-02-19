@@ -15,16 +15,16 @@ class ResturantDetailsView {
     this.setContent.bind(this);
     this.render.bind(this);
     this._setHeading.bind(this);
-
-    // Sets component data
-    this.setData();
-
-    // Set initial content data
-    setContentData("tab-about");
   }
 
   render() {
+    // Set component data before rendering
+    this.setData();
+
+    // Clear DOM for rendering elements
     this._clearImmidieateChildsOfParentElement();
+
+    // Render DOM elements
     this._addImageReel();
     this._setHeading();
     this.setContent();
@@ -32,6 +32,8 @@ class ResturantDetailsView {
 
   setData() {
     this._data = getData();
+    // Set initial content data
+    setContentData("tab-about");
   }
 
   _addImageReel() {
@@ -81,7 +83,7 @@ class ResturantDetailsView {
     if (contentData.type === "about") {
       contentView = new ResturantDetailsAboutView(contentData);
     } else if (contentData.type === "menu") {
-    } else if (contentData.type === "rqeview") {
+    } else if (contentData.type === "review") {
     }
 
     let activeTab = document.querySelector(".tab-active");

@@ -4,7 +4,7 @@ import {
   setResutarantNameSearchResult,
   setBothSearchResult,
 } from "./controllers/contents.controller";
-import ResturantDetailsView from "./views/details.view";
+// import ResturantDetailsView from "./views/details.view";
 
 /// Ok
 
@@ -28,7 +28,7 @@ class App {
     );
     this._loginBtn.addEventListener("click", (event) => {
       event.preventDefault();
-      ResturantDetailsView.render();
+      // ResturantDetailsView.render();
     });
 
     // Renders initial layout
