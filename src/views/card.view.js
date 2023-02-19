@@ -1,12 +1,21 @@
 export default class CardView {
   _data;
+  _parentElement;
+  _currentElement;
 
   constructor(data = undefined) {
     this._data = data;
+    this._setParent();
 
     // setting up execution context for methods
     this._generateMarkup.bind(this);
     this.filterData.bind(this);
+    this.render.bind(this);
+    this._addCardEventHandler.bind(this);
+  }
+
+  _setParent() {
+    this._parentElement = document.querySelector(".card-container");
   }
 
   _generateMarkup() {
@@ -49,6 +58,17 @@ export default class CardView {
     return markup;
   }
 
+  render() {
+    let markup = this._generateMarkup();
+
+    let elment = document.createElement("div");
+    elment.innerHTML = markup;
+    this._parentElement.insertAdjacentElement("beforeend", elment);
+    this._currentElement = elment;
+
+    this._addCardEventHandler();
+  }
+
   filterData() {
     let currency,
       range,
@@ -69,5 +89,13 @@ export default class CardView {
     else if (this._data.priceRange !== undefined) range = this._data.priceRange;
 
     return { name, address, photoSrc, servesCuisine, range, currency };
+  }
+
+  _addCardEventHandler() {
+    this._currentElement.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (this._data.menus !== undefined) console.log("inside card", this);
+      else console.log("not this", this);
+    });
   }
 }

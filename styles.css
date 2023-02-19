@@ -251,13 +251,13 @@ button:focus-visible {
 
 .offers-box {
   height: 280px;
-  width: 1000px;
+  width: 100vh;
   padding: 20px;
   background-color: hsl(0, 5%, 92%);
   display: flex;
   gap: 20px;
   align-items: center;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 .offer-card {
@@ -400,7 +400,7 @@ button:focus-visible {
 }
 
 .time-table {
-  width: 60%;
+  width: 70%;
 }
 
 .time-table-heading {

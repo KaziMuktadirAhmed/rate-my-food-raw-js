@@ -46,11 +46,8 @@ class ContentsView {
 
   setPageContents() {
     this.getCardsDataForCurrentPage();
-    let cards = this._data
-      .map((item) => new CardView(item)._generateMarkup())
-      .join("");
     this.clearCardContainer();
-    this._cardContainer.insertAdjacentHTML("afterbegin", cards);
+    let cards = this._data.map((item) => new CardView(item).render());
     this._parentElement.scrollIntoView({
       behavior: "smooth",
     });
