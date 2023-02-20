@@ -363,6 +363,7 @@ button:focus-visible {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-weight: 300;
+  margin: 2rem 0 1rem 0;
 }
 
 .offers-title {

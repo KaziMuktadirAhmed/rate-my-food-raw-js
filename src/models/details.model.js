@@ -40,7 +40,6 @@ export const setCurrentContent = function (type) {
       offers: data.offers,
     };
   } else if (type === "tab-menu") {
-    console.log("in tab-menu", data.chefName);
     currentContent = {
       type: "menu",
       chef: data.chefName,
@@ -50,7 +49,6 @@ export const setCurrentContent = function (type) {
       safetyMeasures: data.safetyMeasures,
     };
   } else if (type === "tab-review") {
-    console.log("in tab-review");
     currentContent = {
       type: "review",
       bestRating: data.bestRating,

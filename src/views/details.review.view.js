@@ -43,7 +43,6 @@ export default class ResturantDetailsReviewView {
   }
 
   _renderHeadingTitle() {
-    console.log(this._parentElement);
     this._parentElement.insertAdjacentHTML(
       "beforeend",
       `<h2 class="review-tab-heading">Reviews</h2>`

@@ -40,7 +40,6 @@ export default class ResturantDetailsAboutView {
   }
 
   render() {
-    console.log("ok inside:", this);
     this._clearParent();
 
     this._renderOffersTab();

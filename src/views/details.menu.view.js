@@ -38,7 +38,6 @@ export default class ResturantDetailsAboutView {
   _generateMarkup() {}
 
   render() {
-    console.log(this._data);
     this._clearParent();
     this._renderHeading();
     this._renderChefName();
