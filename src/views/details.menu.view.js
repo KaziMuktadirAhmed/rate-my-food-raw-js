@@ -66,11 +66,16 @@ export default class ResturantDetailsAboutView {
   _renderMenuSections() {
     let markup = `<div class="menu-details">`;
     this._data.menus.map((item) => {
-      markup += `<div>`;
+      markup += `<div class="menu">`;
       markup += `<h2 class="menu-heading">${item.name}</h2>`;
       if (item.exclusion)
         markup += `<p class="menu-heading-additional-info">${item.exclusion}</p>`;
+      if (item.description)
+        markup += `<p class="menu-heading-description">${item.description}</p>`;
       markup += this._generateMarkupForMenuSection(item.sections);
+      if (item.footer) {
+        markup += `<p class="menu-heading-additional-info">${item.footer}</p>`;
+      }
       markup += `</div>`;
     });
     markup += `</div>`;
@@ -95,7 +100,8 @@ export default class ResturantDetailsAboutView {
     if (menu_item.isMainDish) markup = `<div class="menu-item menu-item-main">`;
     else markup = `<div class="menu-item">`;
     markup += `<p class="menu-item-name">${menu_item.name}</p>`;
-    markup += `<p>${menu_item.price} ${this._data.currency}</p>`;
+    if (menu_item.price)
+      markup += `<p>${menu_item.price} ${this._data.currency}</p>`;
     markup += `</div>`;
     return markup;
   }

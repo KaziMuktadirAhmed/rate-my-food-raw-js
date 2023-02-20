@@ -296,9 +296,14 @@ button:focus-visible {
 .menu-details {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 25px;
+}
+
+.menu {
+  border: 1px solid black;
   padding: 10px;
 }
 
@@ -311,6 +316,13 @@ button:focus-visible {
   font-weight: 100;
   font-size: smaller;
   color: gray;
+}
+
+.menu-heading-description {
+  font-weight: 300;
+  font-size: medium;
+  color: black;
+  margin: 20px 0 20px 0;
 }
 
 .menu-section-heading {
