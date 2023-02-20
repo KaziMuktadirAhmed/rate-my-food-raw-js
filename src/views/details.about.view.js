@@ -200,13 +200,14 @@ export default class ResturantDetailsAboutView {
     markup += `<h1>Resturant Menu</h1>`;
     if (this._data.chef)
       markup += `<h3 class="menu-chef-name">Chef name: ${this._data.chef}</h3>`;
-    markup += `<div>`;
+    markup += `<div class="menu-item-container">`;
     this._data.menus.map((item) => {
       markup += this._generateMenuItemPreviewMarkup(item, this._data.currency);
     });
     markup += `</div>`;
     markup += `<button class="btn-menu-preview">See details</button>`;
     markup += `</div>`;
+    console.log(markup);
     this._parentElement.insertAdjacentHTML("beforeend", markup);
     this._addClickEventHandler();
   }

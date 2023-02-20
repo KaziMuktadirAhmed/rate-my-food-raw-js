@@ -38,10 +38,11 @@ export default class ResturantDetailsAboutView {
   _generateMarkup() {}
 
   render() {
+    console.log(this._data);
     this._clearParent();
     this._renderHeading();
     this._renderChefName();
-    console.log(this._data);
+    this._renderMenuSections();
   }
 
   _clearParent() {
@@ -62,5 +63,21 @@ export default class ResturantDetailsAboutView {
     }
   }
 
-  _renderMenuSections() {}
+  _renderMenuSections() {
+    let markup = `<div class="menu-details">`;
+    this._data.menus.map((item) => {
+      markup += `<div>`;
+      markup += `<h2 class="menu-section-heading">${item.name}</h2>`;
+      if (item.exclusion) markup += `<p>${item.exclusion}</p>`;
+      markup += this._generateMarkupForMenuSection(item.sections);
+      markup += `</div>`;
+    });
+    markup += `</div>`;
+    this._parentElement.insertAdjacentHTML("beforeend", markup);
+  }
+
+  _generateMarkupForMenuSection(sections) {
+    console.log(sections);
+    return ``;
+  }
 }
