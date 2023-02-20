@@ -207,7 +207,6 @@ export default class ResturantDetailsAboutView {
     markup += `</div>`;
     markup += `<button class="btn-menu-preview">See details</button>`;
     markup += `</div>`;
-    console.log(markup);
     this._parentElement.insertAdjacentHTML("beforeend", markup);
     this._addClickEventHandler();
   }

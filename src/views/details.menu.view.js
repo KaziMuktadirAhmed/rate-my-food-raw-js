@@ -67,8 +67,9 @@ export default class ResturantDetailsAboutView {
     let markup = `<div class="menu-details">`;
     this._data.menus.map((item) => {
       markup += `<div>`;
-      markup += `<h2 class="menu-section-heading">${item.name}</h2>`;
-      if (item.exclusion) markup += `<p>${item.exclusion}</p>`;
+      markup += `<h2 class="menu-heading">${item.name}</h2>`;
+      if (item.exclusion)
+        markup += `<p class="menu-heading-additional-info">${item.exclusion}</p>`;
       markup += this._generateMarkupForMenuSection(item.sections);
       markup += `</div>`;
     });
@@ -77,7 +78,17 @@ export default class ResturantDetailsAboutView {
   }
 
   _generateMarkupForMenuSection(sections) {
-    console.log(sections);
-    return ``;
+    let markup = ``;
+    sections.map((sec) => {
+      markup += `<div class="menu-section">`;
+      markup += `<h3 class="menu-section-heading">${sec.name}</h3>`;
+      sec.items.map((menu_item) => {
+        markup += `<div>`;
+
+        markup += `</div>`;
+      });
+      markup += `</div>`;
+    });
+    return markup;
   }
 }

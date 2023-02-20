@@ -302,9 +302,24 @@ button:focus-visible {
   padding: 10px;
 }
 
-.menu-section-heading {
+.menu-heading {
   font-weight: 300;
   border-bottom: 1px solid rgb(228, 226, 226);
+}
+
+.menu-heading-additional-info {
+  font-weight: 100;
+  font-size: smaller;
+  color: gray;
+}
+
+.menu-section-heading {
+  font-weight: 200;
+  border-bottom: 1px solid rgb(228, 226, 226);
+}
+
+.menu-section {
+  padding: 10px;
 }
 
 .offers-title {
