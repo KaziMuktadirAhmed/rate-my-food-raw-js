@@ -154,7 +154,7 @@ export default class ResturantDetailsAboutView {
           <span class="offer-tag">${item.label}</span>
           <span>${item.name}</span>
         </div>
-        <p>${item.description}</p>
+        <p>${item?.description}</p>
         <button class="offer-card-button">Book this menu</button>
       </div>`;
     });
