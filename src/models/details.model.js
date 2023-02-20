@@ -36,6 +36,7 @@ export const setCurrentContent = function (type) {
       additionalProperty: data.additionalProperty,
       chef: data.chefName,
       menus: getPreviewMenuData(data.menus),
+      currency: data.acceptedCurrency,
       offers: data.offers,
     };
   } else if (type === "tab-menu") {

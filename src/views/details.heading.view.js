@@ -76,7 +76,8 @@ export default class ResturantDetailsHeadingView {
     <span>Review</span>
   </button>
 </div>`;
-    this._parentElement.classList.toggle("heading-no-padding-bottom");
+    if (!this._parentElement.classList.contains("heading-no-padding-bottom"))
+      this._parentElement.classList.add("heading-no-padding-bottom");
     this._parentElement.insertAdjacentHTML("beforeend", tabsMarkup);
   }
 

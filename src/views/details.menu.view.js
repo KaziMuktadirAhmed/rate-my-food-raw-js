@@ -46,12 +46,12 @@ export default class ResturantDetailsAboutView {
     this._parentElement.innerHTML = "";
   }
 
-  _renderMenuSections() {}
-
   _renderChefName() {
     if (this._data.chef) {
       let markup = `<h3 class="menu-chef-name">Chef name: ${this._data.chef}</h3>`;
       this._parentElement.insertAdjacentHTML("beforeend", markup);
     }
   }
+
+  _renderMenuSections() {}
 }

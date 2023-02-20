@@ -1,3 +1,5 @@
+import { controlContents } from "../controllers/details.controller";
+
 export default class ResturantDetailsAboutView {
   _data;
   _parentElement;
@@ -198,22 +200,36 @@ export default class ResturantDetailsAboutView {
     markup += `<h1>Resturant Menu</h1>`;
     if (this._data.chef)
       markup += `<h3 class="menu-chef-name">Chef name: ${this._data.chef}</h3>`;
-
+    markup += `<div>`;
     this._data.menus.map((item) => {
-      markup += this._generateMenuItemPreviewMarkup(item);
+      markup += this._generateMenuItemPreviewMarkup(item, this._data.currency);
     });
     markup += `</div>`;
+    markup += `<button class="btn-menu-preview">See details</button>`;
+    markup += `</div>`;
     this._parentElement.insertAdjacentHTML("beforeend", markup);
+    this._addClickEventHandler();
   }
 
-  _generateMenuItemPreviewMarkup(item) {
-    let markup = `<div class="preview-menu-item">`;
-    // items.map((item) => {
+  _generateMenuItemPreviewMarkup(item, currency) {
+    let markup = `
+            <div class="preview-menu-item">`;
     markup += `
+              <div style="width:70%">
                 <p>${item.name}</p>
-                <p>${item.price}</p>`;
-    // });
-    markup += "</div>";
+              </div>
+              <p>${item.price} ${currency}</p>
+              `;
+    markup += `
+            </div>`;
     return markup;
+  }
+
+  _addClickEventHandler() {
+    let btnDetailsMenu = document.querySelector(".btn-menu-preview");
+    btnDetailsMenu.addEventListener("click", (event) => {
+      event.preventDefault();
+      controlContents("tab-menu");
+    });
   }
 }
