@@ -2,6 +2,7 @@ import { setContentData } from "../controllers/details.controller";
 import { getContentData, getData } from "../models/details.model";
 import ResturantDetailsAboutView from "./details.about.view";
 import ResturantDetailsMenuView from "./details.menu.view";
+import ResturantDetailsReviewView from "./details.review.view";
 import ResturantDetailsHeadingView from "./details.heading.view";
 
 class ResturantDetailsView {
@@ -86,6 +87,7 @@ class ResturantDetailsView {
     } else if (contentData.type === "menu") {
       contentView = new ResturantDetailsMenuView(contentData);
     } else if (contentData.type === "review") {
+      contentView = new ResturantDetailsReviewView(contentData);
     }
 
     let activeTab = document.querySelector(".tab-active");
