@@ -10,6 +10,7 @@ export default class ResturantDetailsAboutView {
     this._setParentElement.bind(this);
     this._clearParent.bind(this);
     this.render.bind(this);
+    this._renderHeading.bind(this);
     this._renderMenuSections.bind(this);
     this._renderChefName.bind(this);
 
@@ -38,12 +39,20 @@ export default class ResturantDetailsAboutView {
 
   render() {
     this._clearParent();
+    this._renderHeading();
     this._renderChefName();
     console.log(this._data);
   }
 
   _clearParent() {
     this._parentElement.innerHTML = "";
+  }
+
+  _renderHeading() {
+    this._parentElement.insertAdjacentHTML(
+      "beforeend",
+      `<h1 class="menu-tab-heading">Resturant Menu</h1>`
+    );
   }
 
   _renderChefName() {
