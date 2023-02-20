@@ -83,12 +83,20 @@ export default class ResturantDetailsAboutView {
       markup += `<div class="menu-section">`;
       markup += `<h3 class="menu-section-heading">${sec.name}</h3>`;
       sec.items.map((menu_item) => {
-        markup += `<div>`;
-
-        markup += `</div>`;
+        markup += this._generateMarkupForMenuItem(menu_item);
       });
       markup += `</div>`;
     });
+    return markup;
+  }
+
+  _generateMarkupForMenuItem(menu_item) {
+    let markup;
+    if (menu_item.isMainDish) markup = `<div class="menu-item menu-item-main">`;
+    else markup = `<div class="menu-item">`;
+    markup += `<p class="menu-item-name">${menu_item.name}</p>`;
+    markup += `<p>${menu_item.price} ${this._data.currency}</p>`;
+    markup += `</div>`;
     return markup;
   }
 }
