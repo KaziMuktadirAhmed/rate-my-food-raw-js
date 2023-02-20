@@ -197,7 +197,7 @@ button:focus-visible {
 
 .heading-name {
   font-size: 1.7rem;
-  font-weight: 400;
+  font-weight: 300;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   padding-bottom: 25px;
@@ -205,7 +205,7 @@ button:focus-visible {
 
 .heading-rating {
   font-size: 1.875rem;
-  font-weight: 400;
+  font-weight: 300;
   font-family: RalewayX, arial, sans-serif;
   line-height: 1.2;
 }
@@ -219,6 +219,7 @@ button:focus-visible {
   margin-top: 2rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 300;
   border-bottom: 1px solid rgb(228, 226, 226);
   margin-bottom: 1rem;
 }
@@ -264,6 +265,7 @@ button:focus-visible {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: medium;
+  font-weight: 400;
 }
 
 .preview-menu-item {
@@ -274,6 +276,7 @@ button:focus-visible {
   font-weight: 200;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid rgb(228, 226, 226);
 }
 
@@ -326,7 +329,8 @@ button:focus-visible {
 }
 
 .menu-section-heading {
-  font-weight: 200;
+  font-weight: 500;
+  color: gray;
   border-bottom: 1px solid rgb(151, 151, 151);
 }
 
@@ -343,6 +347,7 @@ button:focus-visible {
   font-weight: 200;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid rgb(228, 226, 226);
 }
 
@@ -352,6 +357,12 @@ button:focus-visible {
 
 .menu-item-name {
   width: 80%;
+}
+
+.review-tab-heading {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 300;
 }
 
 .offers-title {
@@ -560,6 +571,7 @@ button:focus-visible {
   /* font-size: large; */
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 300;
 }
 
 .time-table-row {

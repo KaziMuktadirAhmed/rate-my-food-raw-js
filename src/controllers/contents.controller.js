@@ -30,7 +30,6 @@ export const setResutarantNameSearchResult = async function (searchQuery) {
       .map((item) => item.restaurant);
     console.log(resultToSet);
     setData(resultToSet);
-    contentsView.setCurrentPage(1);
     contentsView.render();
   } catch (error) {
     throw error;
@@ -54,7 +53,6 @@ export const setBothSearchResult = async function (itemQuery, locationQuery) {
 
     const finalResult = filtredItemResult.concat(resultLocation);
     setData(finalResult);
-    contentsView.setCurrentPage(1);
     contentsView.render();
   } catch (error) {
     throw error;

@@ -35,9 +35,18 @@ export default class ResturantDetailsReviewView {
   render() {
     console.log("ok inside:", this._data);
     this._clearParent();
+    this._renderHeadingTitle();
   }
 
   _clearParent() {
     this._parentElement.innerHTML = "";
+  }
+
+  _renderHeadingTitle() {
+    console.log(this._parentElement);
+    this._parentElement.insertAdjacentHTML(
+      "beforeend",
+      `<h2 class="review-tab-heading">Reviews</h2>`
+    );
   }
 }

@@ -15,9 +15,16 @@ export default class PaginateView {
     this.handelClickPrev.bind(this);
     this._addPageLinks.bind(this);
     this._clearParent.bind(this);
+    this.render.bind(this);
 
     // render component
+    this.render();
+  }
+
+  render() {
     this._clearParent();
+    if (this._maxRange <= 1) return;
+
     this._addPageLinks();
     this._addButtons();
 

@@ -29,6 +29,7 @@ class ContentsView {
   render() {
     this.resetPage();
     this.setPageContents();
+    this.setCurrentPage(1);
     this.setPagination();
   }
 
@@ -61,9 +62,6 @@ class ContentsView {
     this._cardContainer.innerHTML = "";
   }
 
-  /**
-   * @param {number} pageNo page no to transition to
-   */
   setCurrentPage(pageNo) {
     this._currentPage = pageNo;
   }
@@ -80,9 +78,7 @@ class ContentsView {
 
   setPagination() {
     let maxPage = getPageRange();
-    if (maxPage > 1) {
-      this._paginate = new PaginateView(maxPage, this._currentPage);
-    }
+    this._paginate = new PaginateView(maxPage, this._currentPage);
   }
 
   setHeading() {

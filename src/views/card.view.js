@@ -41,6 +41,10 @@ export default class CardView {
     let { name, address, photoSrc, servesCuisine, range, currency } =
       this.filterData();
 
+    let postCode;
+    if (address.zipCode) postCode = address.zipCode;
+    else if (address.postalCode) postCode = address.postalCode;
+
     markup += `<div class="card">
     <img
       src=${photoSrc}
@@ -54,8 +58,7 @@ export default class CardView {
       markup += `<p>
           <span class="card-tag">${servesCuisine}</span>
         </p>`;
-
-    markup += `<h4 class="card-address">${address.street}, ${address.postalCode}, ${address.locality}</h4>
+    markup += `<h4 class="card-address">${address.street}, ${postCode}, ${address.locality}</h4>
       <p>Avarage price range: ${range} ${currency}</p>
     </div>
   </div>`;
