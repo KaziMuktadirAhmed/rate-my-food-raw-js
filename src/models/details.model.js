@@ -34,7 +34,6 @@ export const setCurrentContent = function (type) {
       exchangeRates: data.exchangeRates,
       openingHours: data.openingHours,
       additionalProperty: data.additionalProperty,
-      chef: data.chefName,
       menus: getPreviewMenuData(data.menus),
       currency: data.acceptedCurrency,
       offers: data.offers,

@@ -47,6 +47,10 @@ export default class ResturantDetailsAboutView {
     this._renderTimetable();
     this._renderDescriptions();
     this._renderTransportation();
+
+    this._parentElement.scrollIntoView({
+      behavior: "smooth",
+    });
   }
 
   _clearParent() {
@@ -197,8 +201,6 @@ export default class ResturantDetailsAboutView {
   _renderMenuPreview() {
     let markup = `<div class="about-menu-preview">`;
     markup += `<h1 style="font-weight:300">Resturant Menu</h1>`;
-    if (this._data.chef)
-      markup += `<h3 class="menu-chef-name">Chef name: ${this._data.chef}</h3>`;
     markup += `<div class="menu-item-container">`;
     this._data.menus.map((item) => {
       markup += this._generateMenuItemPreviewMarkup(item, this._data.currency);

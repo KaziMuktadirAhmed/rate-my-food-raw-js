@@ -42,6 +42,10 @@ export default class ResturantDetailsAboutView {
     this._renderHeading();
     this._renderChefName();
     this._renderMenuSections();
+
+    this._parentElement.scrollIntoView({
+      behavior: "smooth",
+    });
   }
 
   _clearParent() {
